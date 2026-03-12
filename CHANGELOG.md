@@ -4,6 +4,8 @@
 *Last reviewed:* 2026-03-12
 
 ## Unreleased
+- Fixed `scripts/bootstrap_new_project.ps1` PowerShell interpolation parser issue by
+  changing `$today:` to `${today}:` in the bootstrap work-item content.
 - Updated public template branding to neutral naming (`AI Dev Repo Template`) while
   keeping Codex-first workflow guidance in docs.
 - Added an explicit OpenAI non-endorsement and trademark disclaimer in `README.md`.
