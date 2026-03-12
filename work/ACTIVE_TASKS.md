@@ -1,5 +1,5 @@
 # Active Tasks
-*Version:* v1.2  
+*Version:* v1.4  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -8,6 +8,7 @@ This file is the canonical current task list for the repo.
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
+| TEMPLATE-009 | Reduce onboarding friction and harden release/CI reliability | done | codex | Run one throwaway `Use this template` flow and measure newcomer completion time | 2026-03-12 |
 | TEMPLATE-008 | Launch template with neutral public branding and Codex-first positioning | done | codex | Run one throwaway `Use this template` bootstrap test and capture friction as TEMPLATE-009 | 2026-03-12 |
 | TEMPLATE-007 | Normalize docs and maintenance commands for OS-agnostic usage | done | codex | Run external newcomer passes on Linux and Windows to validate command conventions | 2026-03-12 |
 | TEMPLATE-006 | Run first-time user trial and harden cross-platform onboarding | done | codex | Run one external newcomer trial and capture friction as TEMPLATE-007 | 2026-03-11 |

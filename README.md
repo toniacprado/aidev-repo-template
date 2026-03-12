@@ -1,5 +1,5 @@
 # AI Dev Repo Template
-*Version:* v1.3  
+*Version:* v1.4  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -49,24 +49,14 @@ Fallback (if GitHub template flow is unavailable):
 ---
 
 ## Start here
-Read in this order:
-1. `docs/START_HERE.md`
-2. `docs/HUMAN_OPERATING_GUIDE.md`
-3. `docs/CODEX_FIRST_HOUR.md`
-4. `docs/PROJECT_MANIFESTO.md`
-5. `docs/PROJECT_CHARTER.md`
-6. `docs/AI_DEV_WORKFLOW.md`
-7. `docs/CODEX_PROMPTING.md`
-8. `docs/TASK_MANAGEMENT.md`
-9. `docs/GUARDRAILS.md`
-10. `docs/MODEL_POLICY.md`
-11. `docs/CODEX_ENVIRONMENT.md`
-12. `docs/TEMPLATE_MAINTENANCE.md`
-13. `docs/TECH_STACK_SELECTION.md`
-14. `docs/ENGINEERING_STANDARDS.md`
-15. `docs/REPO_STRUCTURE.md`
-16. `docs/COMMAND_CONVENTIONS.md`
-17. `AGENTS.md`
+Frictionless first pass (no backtracking):
+1. `docs/CODEX_FIRST_HOUR.md`
+2. `docs/PROJECT_MANIFESTO.md`
+3. `docs/PROJECT_CHARTER.md`
+4. `AGENTS.md`
+5. `docs/AI_DEV_WORKFLOW.md`
+
+Need the full map after that? Use `docs/START_HERE.md`.
 
 ## Command conventions
 - Use `python` commands from an activated virtual environment.

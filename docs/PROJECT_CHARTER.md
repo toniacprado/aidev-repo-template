@@ -1,7 +1,7 @@
 # Project Charter
-*Version:* v0.2  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.3  
+*Date:* 2026-03-12  
+*Last reviewed:* 2026-03-12
 
 ## Scope
 ### In scope
@@ -34,3 +34,6 @@
 - Start with the smallest useful template that carries strong boundaries.
 - Prefer durable repo conventions over one-off chat advice.
 - Keep docs, prompts, evals, and tests evolving together.
+
+## Next in fast path
+Open `AGENTS.md`, then `docs/AI_DEV_WORKFLOW.md`.

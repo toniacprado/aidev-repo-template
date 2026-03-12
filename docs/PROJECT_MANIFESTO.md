@@ -1,7 +1,7 @@
 # Project Manifesto
-*Version:* v0.2  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.3  
+*Date:* 2026-03-12  
+*Last reviewed:* 2026-03-12
 
 This repository is itself a product: a Codex-first template for starting new projects
 without losing human clarity or engineering discipline.
@@ -52,3 +52,6 @@ Within the first day of adopting this template, success should feel like:
 - `docs/REPO_STRUCTURE.md`
 
 When implementation feels lost, return here.
+
+## Next in fast path
+Open `docs/PROJECT_CHARTER.md`.
