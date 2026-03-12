@@ -1,5 +1,5 @@
 # Active Tasks
-*Version:* v1.1  
+*Version:* v1.2  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -8,7 +8,7 @@ This file is the canonical current task list for the repo.
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
-| TEMPLATE-008 | Launch template with neutral public branding and Codex-first positioning | in_progress | codex | Apply branding/disclaimer updates, run quality gates, then initialize git + prepare GitHub publish | 2026-03-12 |
+| TEMPLATE-008 | Launch template with neutral public branding and Codex-first positioning | done | codex | Run one throwaway `Use this template` bootstrap test and capture friction as TEMPLATE-009 | 2026-03-12 |
 | TEMPLATE-007 | Normalize docs and maintenance commands for OS-agnostic usage | done | codex | Run external newcomer passes on Linux and Windows to validate command conventions | 2026-03-12 |
 | TEMPLATE-006 | Run first-time user trial and harden cross-platform onboarding | done | codex | Run one external newcomer trial and capture friction as TEMPLATE-007 | 2026-03-11 |
 | TEMPLATE-005 | Implement best-in-class gaps: eval runner, rules/skills scaffolding, newcomer harness, and issue templates | done | codex | Run a real first-time user trial and convert friction into follow-up tasks | 2026-03-11 |

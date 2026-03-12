@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v0.7  
+*Version:* v0.8  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -83,3 +83,12 @@ a single task file.
     confusion and lower trust in the template.
   Action or follow-up: use `text` code blocks for shell-neutral command lists and keep
     shell-specific code blocks only where syntax actually differs.
+
+- Date: 2026-03-12
+  Area: GitHub branch protection
+  Learning: required status checks must match the actual job context names, not only workflow
+    names, or merges will be blocked even when CI appears green.
+  Why it matters: publish-time branch protection mistakes can create false-negative merge blocks
+    and slow urgent fixes.
+  Action or follow-up: when enabling required checks, verify exact context names from a real run
+    before locking protection policy.
