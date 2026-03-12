@@ -148,7 +148,7 @@ blocked_on: none
 - `work/ACTIVE_TASKS.md` reflects the real next step.
 
 ## Progress Log
-- $today: bootstrap task created from the template.
+- ${today}: bootstrap task created from the template.
 
 ## Verification
 - not run yet
