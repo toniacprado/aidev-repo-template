@@ -1,0 +1,51 @@
+name: Codex Prompt/Eval Gap
+description: Propose or report a prompt/eval quality gap.
+title: "[Prompt/Eval] "
+labels:
+  - codex
+  - prompt
+  - eval
+body:
+  - type: textarea
+    id: prompt_asset
+    attributes:
+      label: Prompt asset(s)
+      description: Which prompt file(s) are affected?
+      placeholder: prompts/PROMPT-...
+    validations:
+      required: true
+
+  - type: textarea
+    id: gap
+    attributes:
+      label: Gap description
+      description: What failure mode or ambiguity exists?
+    validations:
+      required: true
+
+  - type: textarea
+    id: eval_coverage
+    attributes:
+      label: Eval coverage impact
+      description: Which eval is missing or insufficient?
+      placeholder: evals/EVAL-...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: Proposed fix
+      description: What should change in prompt/eval files?
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation commands
+      value: |
+        - python scripts/run_prompt_evals.py
+        - pytest -q
+    validations:
+      required: true

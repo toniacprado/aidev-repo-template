@@ -1,0 +1,21 @@
+schema: work_item
+version: 0.4
+required_frontmatter:
+  - type
+  - item_id
+  - title
+  - status
+  - owner
+  - updated
+  - next_action
+  - blocked_on
+allowed_values:
+  type: [work_item]
+  status: [todo, in_progress, blocked, done]
+sections_required:
+  - Summary
+  - Acceptance Criteria
+  - Progress Log
+  - Verification
+  - Next Action
+  - Notes

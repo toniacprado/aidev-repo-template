@@ -1,0 +1,15 @@
+schema: artifact
+version: 0.1
+required_frontmatter:
+  - type
+  - artifact_id
+  - title
+  - created
+  - classification
+allowed_values:
+  type: [artifact]
+  classification: [public, internal, confidential, restricted]
+sections_required:
+  - Summary
+  - Source
+  - Notes

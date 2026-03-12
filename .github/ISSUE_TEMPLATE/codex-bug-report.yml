@@ -1,0 +1,51 @@
+name: Codex Bug Report
+description: Report a bug with reproducible context for Codex-assisted fixing.
+title: "[Bug] "
+labels:
+  - bug
+  - codex
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What happened?
+      placeholder: Actual behavior with error messages or screenshots.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide deterministic steps or commands.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Suspected scope
+      description: Which files or modules are likely involved?
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Required regression coverage
+      description: What test/eval should fail before fix and pass after fix?
+    validations:
+      required: true

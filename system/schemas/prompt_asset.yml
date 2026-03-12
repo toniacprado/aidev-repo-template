@@ -1,0 +1,20 @@
+schema: prompt_asset
+version: 0.2
+required_frontmatter:
+  - type
+  - prompt_id
+  - title
+  - owner
+  - status
+  - model_scope
+  - linked_evals
+allowed_values:
+  type: [prompt_asset]
+  status: [draft, active, deprecated]
+sections_required:
+  - Goal
+  - Inputs
+  - Constraints
+  - Output Contract
+  - Eval Link
+  - Change Notes

@@ -1,0 +1,15 @@
+schema: decision
+version: 0.1
+required_frontmatter:
+  - type
+  - decision_id
+  - title
+  - date
+  - status
+allowed_values:
+  type: [decision]
+  status: [proposed, approved, superseded, rejected]
+sections_required:
+  - Context
+  - Decision
+  - Consequences

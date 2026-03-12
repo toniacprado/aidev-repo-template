@@ -1,0 +1,19 @@
+schema: eval_case
+version: 0.2
+required_frontmatter:
+  - type
+  - eval_id
+  - title
+  - status
+  - prompt_ids
+  - grader_type
+allowed_values:
+  type: [eval_case]
+  status: [draft, active, archived]
+  grader_type: [pass_fail, rubric, exact_match, pairwise]
+sections_required:
+  - Intent
+  - Inputs
+  - Expected Result
+  - Failure Signals
+  - Notes

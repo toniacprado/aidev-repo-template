@@ -1,0 +1,18 @@
+# Shared Codex project config example.
+# Copy to `.codex/config.toml` after the team agrees on the defaults.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+project_doc_max_bytes = 65536
+# model = "your-approved-codex-model-alias"
+# model_reasoning_effort = "medium"
+# plan_mode_reasoning_effort = "high"
+
+[sandbox_workspace_write]
+network_access = false
+
+[shell_environment_policy]
+inherit = "core"
+ignore_default_excludes = false
+exclude = ["*TOKEN*", "*SECRET*", "*KEY*"]
+include_only = []

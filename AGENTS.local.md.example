@@ -1,0 +1,18 @@
+# Local Agent Preferences (Example)
+
+This file is inspired by Claude-style local memory, but Codex does not automatically
+load `AGENTS.local.md` when a repository already has a root `AGENTS.md`.
+
+Use this example in one of three ways:
+- copy useful lines into your user-level `~/.codex/config.toml` as
+  `developer_instructions`
+- keep a private local note and reference it in your prompt when needed
+- adapt the ideas into a nested `AGENTS.override.md` for a specific subtree if the rules
+  should apply to everyone working there
+
+## Example personal preferences
+- Prefer concise commentary updates.
+- Use my preferred test fixture names and sample accounts.
+- Avoid touching generated lockfiles unless the task requires it.
+- Ask before adding new dependencies.
+- When blocked, leave the unblock in `work/ACTIVE_TASKS.md`.

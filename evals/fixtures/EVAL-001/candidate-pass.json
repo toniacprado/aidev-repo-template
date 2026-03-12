@@ -1,0 +1,24 @@
+{
+  "summary": "Discount cap behavior changed and tests were not run, so merge risk is high.",
+  "findings": [
+    {
+      "severity": "high",
+      "file": "src/payments/apply_discount.py",
+      "issue": "Behavior-changing pricing logic was modified without targeted regression tests.",
+      "recommendation": "Run discount and pricing regression tests before merge."
+    }
+  ],
+  "verification": {
+    "status": "partial",
+    "evidence": [
+      "ruff check . passed"
+    ],
+    "gaps": [
+      "No tests were run for pricing behavior."
+    ]
+  },
+  "next_actions": [
+    "Run tests/test_discounts.py and the pricing regression suite.",
+    "Update review notes with test output before merge."
+  ]
+}

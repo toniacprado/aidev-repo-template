@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Node
+node_modules/
+dist/
+
+# Editors
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local env
+.env
+AGENTS.local.md
+CLAUDE.local.md
+.codex/config.local.toml
+.claude/settings.local.json
+
+# Generated runtime outputs
+runtime/*
+!runtime/README.md

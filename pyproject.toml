@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aidev-repo-template"
+version = "0.7.0"
+description = "AI development repo template with Codex-first docs, prompts, evals, guardrails, and verification scaffolding."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit>=4.2.0",
+  "pytest>=8.4.1",
+  "ruff>=0.12.11",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/repo_template"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

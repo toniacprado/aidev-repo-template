@@ -1,0 +1,12 @@
+[
+  {
+    "name": "pass-missing-tests-is-flagged",
+    "file": "candidate-pass.json",
+    "expect_pass": true
+  },
+  {
+    "name": "fail-incorrectly-green",
+    "file": "candidate-fail.json",
+    "expect_pass": false
+  }
+]

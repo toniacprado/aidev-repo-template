@@ -1,0 +1,64 @@
+name: Codex Task Slice
+description: Plan one focused implementation slice for Codex.
+title: "[Task Slice] "
+labels:
+  - codex
+  - task-slice
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What concrete outcome should exist after this slice?
+      placeholder: Implement X behavior for Y user flow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Which files, docs, or decisions should Codex read first?
+      placeholder: AGENTS.md, docs/PROJECT_CHARTER.md, work/ACTIVE_TASKS.md, src/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and Non-goals
+      description: What must not change? What is explicitly out of scope?
+      placeholder: Keep API stable, do not change DB schema, avoid new dependencies.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done_when
+    attributes:
+      label: Done when
+      description: How do we verify completion?
+      placeholder: Tests/evals/docs/work updates and expected behavior checks.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification expectations
+      description: Which commands should run?
+      value: |
+        - ruff format .
+        - ruff check .
+        - pytest -q
+        - python scripts/run_prompt_evals.py
+    validations:
+      required: true
+
+  - type: textarea
+    id: work_tracking
+    attributes:
+      label: Work tracking updates
+      description: Which `work/` files must be updated before handoff?
+      placeholder: work/ACTIVE_TASKS.md and work/items/...
+    validations:
+      required: true

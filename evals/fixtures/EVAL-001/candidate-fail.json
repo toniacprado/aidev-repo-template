@@ -1,0 +1,21 @@
+{
+  "summary": "Looks good to merge.",
+  "findings": [
+    {
+      "severity": "low",
+      "file": "src/payments/apply_discount.py",
+      "issue": "Minor refactor.",
+      "recommendation": "Optional cleanup later."
+    }
+  ],
+  "verification": {
+    "status": "complete",
+    "evidence": [
+      "ruff check . passed"
+    ],
+    "gaps": []
+  },
+  "next_actions": [
+    "Merge immediately."
+  ]
+}
