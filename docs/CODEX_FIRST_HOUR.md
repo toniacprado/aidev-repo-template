@@ -1,7 +1,7 @@
 # Codex First Hour
-*Version:* v0.4  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.5  
+*Date:* 2026-03-12  
+*Last reviewed:* 2026-03-12
 
 This guide is for first-time Codex users who want a clean, high-signal start.
 
@@ -64,3 +64,10 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`
 - `work/ACTIVE_TASKS.md`
+
+## Next in fast path
+After this file, continue in order:
+1. `docs/PROJECT_MANIFESTO.md`
+2. `docs/PROJECT_CHARTER.md`
+3. `AGENTS.md`
+4. `docs/AI_DEV_WORKFLOW.md`

@@ -1,9 +1,20 @@
 # Changelog
-*Version:* v1.2  
+*Version:* v1.4  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
 ## Unreleased
+- Clarified README setup guidance with separate paths for template maintainers vs
+  downstream users.
+- Simplified onboarding from a long linear doc index into a fast 5-step path plus
+  grouped deep-dive references.
+- Added explicit "next file" hints in fast-path docs to reduce backtracking friction.
+- Updated CI actions to Node-24-ready major versions:
+  `actions/checkout@v6` and `actions/setup-python@v6`.
+- Added a deterministic behavioral newcomer smoke check that executes Python bootstrap
+  flow in a temp repo scaffold.
+
+## v1.2.0 - 2026-03-12
 - Fixed `scripts/bootstrap_new_project.ps1` PowerShell interpolation parser issue by
   changing `$today:` to `${today}:` in the bootstrap work-item content.
 - Updated public template branding to neutral naming (`AI Dev Repo Template`) while

@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v0.8  
+*Version:* v0.9  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -89,6 +89,23 @@ a single task file.
   Learning: required status checks must match the actual job context names, not only workflow
     names, or merges will be blocked even when CI appears green.
   Why it matters: publish-time branch protection mistakes can create false-negative merge blocks
-    and slow urgent fixes.
+  and slow urgent fixes.
   Action or follow-up: when enabling required checks, verify exact context names from a real run
-    before locking protection policy.
+  before locking protection policy.
+
+- Date: 2026-03-12
+  Area: onboarding UX
+  Learning: long sequential reading lists create navigation drop-off; users lose context and
+    momentum when they must repeatedly return to an index.
+  Why it matters: both newcomers and senior engineers prefer low-friction, linear activation
+    paths that get to productive work quickly.
+  Action or follow-up: keep a short fast path (5 docs max) and add explicit "next file" hints
+    inside fast-path docs.
+
+- Date: 2026-03-12
+  Area: newcomer verification
+  Learning: structural smoke checks are necessary but insufficient; they miss failures where
+    files exist but workflows break.
+  Why it matters: template confidence depends on proving behavior, not only presence of assets.
+  Action or follow-up: keep at least one deterministic behavioral check in newcomer smoke tests
+    (bootstrap execution on temp scaffold).

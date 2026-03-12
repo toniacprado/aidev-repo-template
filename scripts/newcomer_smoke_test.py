@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import importlib
+import importlib.util
 import shutil
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -34,6 +36,56 @@ def _check_file_contains(path: Path, needle: str, label: str) -> CheckResult:
         name=label,
         passed=needle in text,
         detail=f"expected to find `{needle}` in {path.relative_to(ROOT)}",
+    )
+
+
+def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
+    bootstrap_script = repo_root / "scripts" / "bootstrap_new_project.py"
+    spec = importlib.util.spec_from_file_location("bootstrap_new_project", bootstrap_script)
+    if not spec or not spec.loader:
+        return CheckResult(
+            name="python-bootstrap-behavior",
+            passed=False,
+            detail="unable to load scripts/bootstrap_new_project.py for behavioral check",
+        )
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_root = Path(temp_dir)
+        (temp_root / "work" / "items").mkdir(parents=True, exist_ok=True)
+        (temp_root / "README.md").write_text("# AI Dev Repo Template\n", encoding="utf-8")
+        (temp_root / "pyproject.toml").write_text(
+            '[project]\nname = "aidev-repo-template"\nversion = "0.7.0"\n',
+            encoding="utf-8",
+        )
+        (temp_root / "CHANGELOG.md").write_text("# Changelog\n", encoding="utf-8")
+        (temp_root / "work" / "ACTIVE_TASKS.md").write_text("# Active Tasks\n", encoding="utf-8")
+        (temp_root / "work" / "LEARNINGS.md").write_text("# Durable Learnings\n", encoding="utf-8")
+        (temp_root / "work" / "items" / "TEMPLATE-001-sample.md").write_text(
+            "# Template item\n", encoding="utf-8"
+        )
+
+        slug = module.run_bootstrap(
+            repo_root=temp_root,
+            project_name="Trial Project",
+            project_slug="trial-project",
+        )
+        active_tasks = (temp_root / "work" / "ACTIVE_TASKS.md").read_text(encoding="utf-8")
+        bootstrap_item = temp_root / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
+        no_template_items = not list((temp_root / "work" / "items").glob("TEMPLATE-*.md"))
+        passed = (
+            slug == "trial-project"
+            and bootstrap_item.exists()
+            and "BOOTSTRAP-001" in active_tasks
+            and no_template_items
+        )
+
+    return CheckResult(
+        name="python-bootstrap-behavior",
+        passed=passed,
+        detail="python bootstrap should generate BOOTSTRAP-001 and clear TEMPLATE-* items",
     )
 
 
@@ -80,6 +132,7 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
             "cross-platform-bootstrap-script",
         )
     )
+    checks.append(_check_python_bootstrap_behavior(repo_root))
     checks.append(
         _check_path_exists(
             repo_root / "prompts" / "PROMPT-001-repo-change-triage.md",
