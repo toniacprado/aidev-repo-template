@@ -1,5 +1,5 @@
 # AI Dev Repo Template
-*Version:* v1.2  
+*Version:* v1.3  
 *Date:* 2026-03-12  
 *Last reviewed:* 2026-03-12
 
@@ -26,18 +26,23 @@ visible task state, model and guardrail policies, and lightweight verification.
 ---
 
 ## Use this template
-Preferred path:
+This section has two different audiences.
+
+If you are the template author/maintainer (you):
 1. Publish this repo to GitHub.
 2. Enable `Template repository` in GitHub settings.
-3. Click `Use this template` to create a fresh repo.
-4. Run `python3 scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python` on Windows).
-5. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
-6. Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
 
-Fallback path:
+If you are a user starting a new project from this template:
+1. Open the published template repo on GitHub.
+2. Click `Use this template` to create a fresh repo.
+3. Run `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux).
+4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
+5. Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
+
+Fallback (if GitHub template flow is unavailable):
 1. Clone the repo.
 2. Remove the old `.git` history.
-3. Run `python3 scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python` on Windows).
+3. Run `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux).
 4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
 5. Create a fresh first commit in the new repo.
 
