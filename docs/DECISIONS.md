@@ -1,7 +1,7 @@
 # Decisions Log
-*Version:* v0.4  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.5  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 Use this file to record meaningful product, architecture, or workflow decisions.
 
@@ -47,3 +47,16 @@ Use this file to record meaningful product, architecture, or workflow decisions.
 - Alternatives considered: relying on user-specific local config only.
 - Consequences: teams can review shared AI operating choices in the repo.
 - Revisit when: Codex configuration and policy mechanisms change materially.
+
+### 2026-03-23 - Bootstrap should generate project-facing handoff docs
+- Decision: bootstrap now rewrites the landing docs into project-draft content and
+  generates `docs/BOOTSTRAP_NEXT_STEPS.md` instead of relying on template narrative plus
+  a scattered checklist.
+- Why: first-time users need the generated repo to say "here is your draft project and
+  the next steps" immediately, especially on GitHub web before any chat guidance exists.
+- Alternatives considered: keeping the existing docs and relying on manual checklist
+  navigation, or adding a second required starter script.
+- Consequences: Python and PowerShell bootstrap paths must stay aligned, and tests must
+  assert the generated handoff behavior instead of only structural cleanup.
+- Revisit when: real template-user trials show the generated guide is still too indirect
+  or a more interactive bootstrap flow is justified.

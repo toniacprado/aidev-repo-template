@@ -1,7 +1,7 @@
 # Repo Bootstrap Checklist
-*Version:* v0.9  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.0  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 Use this checklist immediately after copying this starter into a real repository.
 
@@ -11,7 +11,10 @@ Use this checklist immediately after copying this starter into a real repository
 - If `python` is unavailable before activation, use
   `python3 scripts/bootstrap_new_project.py --project-name "Your Project"` on macOS/Linux.
 - Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
-- Rename the project in `README.md` and `pyproject.toml` if the bootstrap script did not.
+- Open `docs/BOOTSTRAP_NEXT_STEPS.md` immediately after bootstrap. Treat it as the
+  primary handoff file until the product docs are real.
+- Confirm `README.md` and `docs/START_HERE.md` read like your project rather than the
+  template. Rewrite any remaining placeholder language.
 - Rewrite `docs/PROJECT_MANIFESTO.md` in plain language for the real product.
 - Rewrite `docs/PROJECT_CHARTER.md` with scope, users, and non-goals.
 - Decide whether the sample Python verification stack will stay or be replaced.

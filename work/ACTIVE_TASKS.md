@@ -1,13 +1,14 @@
 # Active Tasks
-*Version:* v1.4  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.6  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This file is the canonical current task list for the repo.
 
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
+| TEMPLATE-010 | Make post-bootstrap onboarding project-facing and explicit for first-time users | done | codex | Run one fresh GitHub `Use this template` flow and confirm the generated handoff docs are clear without extra chat guidance | 2026-03-23 |
 | TEMPLATE-009 | Reduce onboarding friction and harden release/CI reliability | done | codex | Run one throwaway `Use this template` flow and measure newcomer completion time | 2026-03-12 |
 | TEMPLATE-008 | Launch template with neutral public branding and Codex-first positioning | done | codex | Run one throwaway `Use this template` bootstrap test and capture friction as TEMPLATE-009 | 2026-03-12 |
 | TEMPLATE-007 | Normalize docs and maintenance commands for OS-agnostic usage | done | codex | Run external newcomer passes on Linux and Windows to validate command conventions | 2026-03-12 |

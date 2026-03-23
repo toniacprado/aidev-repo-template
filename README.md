@@ -1,7 +1,7 @@
 # AI Dev Repo Template
-*Version:* v1.4  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.5  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This repository is a starter template for teams who want a reusable AI development
 baseline with Codex-first workflow standards, without making the project dependent on
@@ -37,14 +37,20 @@ If you are a user starting a new project from this template:
 2. Click `Use this template` to create a fresh repo.
 3. Run `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux).
 4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
-5. Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
+5. Open the generated `docs/BOOTSTRAP_NEXT_STEPS.md` in the new repo.
+6. Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
 
 Fallback (if GitHub template flow is unavailable):
 1. Clone the repo.
 2. Remove the old `.git` history.
 3. Run `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux).
 4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
-5. Create a fresh first commit in the new repo.
+5. Open the generated `docs/BOOTSTRAP_NEXT_STEPS.md` in the new repo.
+6. Create a fresh first commit in the new repo.
+
+Bootstrap now rewrites the landing docs into project-facing drafts so the new repo stops
+presenting itself as the template. The user still needs to replace the placeholder
+content with the real product definition.
 
 ---
 

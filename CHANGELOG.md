@@ -1,9 +1,16 @@
 # Changelog
-*Version:* v1.4  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.5  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 ## Unreleased
+- Changed bootstrap to generate project-facing draft docs (`README.md`,
+  `docs/START_HERE.md`, `docs/PROJECT_MANIFESTO.md`, `docs/PROJECT_CHARTER.md`,
+  and `docs/TECH_STACK_SELECTION.md`) instead of leaving template narrative in place.
+- Added a generated `docs/BOOTSTRAP_NEXT_STEPS.md` guide so fresh repos have one obvious
+  post-bootstrap handoff.
+- Expanded bootstrap tests and newcomer smoke checks to enforce the guided handoff
+  behavior.
 - Clarified README setup guidance with separate paths for template maintainers vs
   downstream users.
 - Simplified onboarding from a long linear doc index into a fast 5-step path plus

@@ -1,7 +1,7 @@
 # Durable Learnings
-*Version:* v0.9  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.0  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
@@ -109,3 +109,13 @@ a single task file.
   Why it matters: template confidence depends on proving behavior, not only presence of assets.
   Action or follow-up: keep at least one deterministic behavioral check in newcomer smoke tests
     (bootstrap execution on temp scaffold).
+
+- Date: 2026-03-23
+  Area: post-bootstrap onboarding
+  Learning: resetting names and task files is not enough; if bootstrap leaves the README and
+    product docs speaking as the template, first-time users assume the repo is unfinished or
+    broken.
+  Why it matters: the generated repo must immediately read like "your project in draft mode"
+    with one obvious next-step path, or newcomers lose confidence before doing real work.
+  Action or follow-up: keep bootstrap generating project-facing placeholder docs plus a single
+    post-bootstrap guide, and validate that flow with real GitHub template runs.

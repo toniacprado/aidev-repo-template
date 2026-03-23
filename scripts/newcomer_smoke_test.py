@@ -72,11 +72,19 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
             project_name="Trial Project",
             project_slug="trial-project",
         )
+        readme = (temp_root / "README.md").read_text(encoding="utf-8")
         active_tasks = (temp_root / "work" / "ACTIVE_TASKS.md").read_text(encoding="utf-8")
+        bootstrap_guide = temp_root / "docs" / "BOOTSTRAP_NEXT_STEPS.md"
+        start_here = temp_root / "docs" / "START_HERE.md"
+        manifesto = (temp_root / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
         bootstrap_item = temp_root / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
         no_template_items = not list((temp_root / "work" / "items").glob("TEMPLATE-*.md"))
         passed = (
             slug == "trial-project"
+            and "Project-facing draft docs were generated" in readme
+            and bootstrap_guide.exists()
+            and start_here.exists()
+            and "Trial Project" in manifesto
             and bootstrap_item.exists()
             and "BOOTSTRAP-001" in active_tasks
             and no_template_items
@@ -85,7 +93,10 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
     return CheckResult(
         name="python-bootstrap-behavior",
         passed=passed,
-        detail="python bootstrap should generate BOOTSTRAP-001 and clear TEMPLATE-* items",
+        detail=(
+            "python bootstrap should generate project-draft docs, BOOTSTRAP-001, "
+            "and clear TEMPLATE-* items"
+        ),
     )
 
 
