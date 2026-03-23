@@ -56,24 +56,51 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     )
 
     assert "Bootstrap complete for Acme Platform (acme-platform)." in result.stdout
+    assert "docs/CODEX_SESSION_STARTER.md" in result.stdout
     assert "docs/BOOTSTRAP_NEXT_STEPS.md" in result.stdout
+    assert "docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md" in result.stdout
 
     readme_text = (tmp_path / "README.md").read_text(encoding="utf-8")
     assert readme_text.startswith("# Acme Platform")
-    assert "Project-facing draft docs were generated" in readme_text
+    assert "Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex." in (
+        readme_text
+    )
+    assert "Project-facing draft docs were generated for the manifesto, charter, stack" in (
+        readme_text
+    )
 
     assert 'name = "acme-platform"' in (tmp_path / "pyproject.toml").read_text(encoding="utf-8")
     today = date.today().isoformat()
     assert f"*Date:* {today}" in (tmp_path / "CHANGELOG.md").read_text(encoding="utf-8")
 
     start_here = (tmp_path / "docs" / "START_HERE.md").read_text(encoding="utf-8")
-    assert "This is the shortest useful path for the first working session in Acme Platform." in (
+    assert (
+        "This is the shortest useful path for the first working session in Acme Platform."
+        in start_here
+    )
+    assert "Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended bootstrap prompt" in (
         start_here
     )
 
+    session_starter = (tmp_path / "docs" / "CODEX_SESSION_STARTER.md").read_text(encoding="utf-8")
+    assert "Take over bootstrap and turn this fresh repo into a real first-pass" in (
+        session_starter
+    )
+    assert "Skipping bootstrap is allowed but not recommended." in session_starter
+
+    artifact_workshop = (tmp_path / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Use this guide to help Codex draft the core artifacts for Acme Platform." in (
+        artifact_workshop
+    )
+    assert "## Artifact 4: Decisions Log" in artifact_workshop
+
     bootstrap_guide = (tmp_path / "docs" / "BOOTSTRAP_NEXT_STEPS.md").read_text(encoding="utf-8")
     assert "This guide is the primary post-bootstrap handoff for Acme Platform." in bootstrap_guide
+    assert "recommends a spec-first bootstrap before feature work" in bootstrap_guide
     assert "Set the project slug to `acme-platform` in `pyproject.toml`." in bootstrap_guide
+    assert "## Skip Path" in bootstrap_guide
 
     manifesto = (tmp_path / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
     assert "This draft was generated during bootstrap for Acme Platform." in manifesto
@@ -85,22 +112,28 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "This draft records the inherited defaults from the template" in tech_stack
     assert "- Repo slug: `acme-platform`" in tech_stack
 
+    decisions = (tmp_path / "docs" / "DECISIONS.md").read_text(encoding="utf-8")
+    assert "### " + today + " - Bootstrap stays recommendation-first" in decisions
+    assert "Acme Platform should strongly recommend finishing the core bootstrap" in decisions
+
     active_tasks = (tmp_path / "work" / "ACTIVE_TASKS.md").read_text(encoding="utf-8")
     assert "BOOTSTRAP-001" in active_tasks
     assert "Initialize Acme Platform from the Codex-first template" in active_tasks
     assert (
         "| BOOTSTRAP-001 | Initialize Acme Platform from the Codex-first template |" in active_tasks
     )
-    assert "Open docs/BOOTSTRAP_NEXT_STEPS.md and complete Step 1." in active_tasks
+    assert "Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt." in active_tasks
     assert f"| {today} |" in active_tasks
 
     bootstrap_item = tmp_path / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
     assert bootstrap_item.exists()
     bootstrap_item_text = bootstrap_item.read_text(encoding="utf-8")
-    assert "Use `docs/BOOTSTRAP_NEXT_STEPS.md` as the primary guide" in bootstrap_item_text
+    assert "Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the" in (
+        bootstrap_item_text
+    )
     assert f"updated: {today}" in bootstrap_item_text
     assert (
-        f"- {today}: bootstrap task created from the template with project-draft docs and a"
+        f"- {today}: bootstrap task created from the template with project-draft docs, a Codex"
         in bootstrap_item_text
     )
     assert not list((tmp_path / "work" / "items").glob("TEMPLATE-*.md"))

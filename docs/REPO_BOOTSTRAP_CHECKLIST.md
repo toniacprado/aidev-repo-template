@@ -1,5 +1,5 @@
 # Repo Bootstrap Checklist
-*Version:* v1.0  
+*Version:* v1.1  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -11,14 +11,20 @@ Use this checklist immediately after copying this starter into a real repository
 - If `python` is unavailable before activation, use
   `python3 scripts/bootstrap_new_project.py --project-name "Your Project"` on macOS/Linux.
 - Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
+- Open `docs/CODEX_SESSION_STARTER.md` immediately after bootstrap and paste the
+  recommended prompt into Codex unless you have a strong reason to skip bootstrap.
 - Open `docs/BOOTSTRAP_NEXT_STEPS.md` immediately after bootstrap. Treat it as the
   primary handoff file until the product docs are real.
+- Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` to help Codex interview the user and draft
+  the core artifacts instead of waiting for a perfect one-shot prompt.
 - Confirm `README.md` and `docs/START_HERE.md` read like your project rather than the
   template. Rewrite any remaining placeholder language.
 - Rewrite `docs/PROJECT_MANIFESTO.md` in plain language for the real product.
 - Rewrite `docs/PROJECT_CHARTER.md` with scope, users, and non-goals.
 - Decide whether the sample Python verification stack will stay or be replaced.
 - Update `docs/TECH_STACK_SELECTION.md` with the real project decision.
+- Confirm `docs/DECISIONS.md` contains project-specific decisions rather than template
+  history.
 - Replace any sample package or folder names under `src/`.
 - Confirm whether `work/` will be the canonical task tracker, then keep it current.
 - Review `.codex/config.toml.example` and decide what shared Codex defaults should be committed.

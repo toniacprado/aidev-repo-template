@@ -1,7 +1,7 @@
 # AI Dev Workflow
-*Version:* v0.7  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.8  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This workflow keeps AI-assisted development aligned with product intent and repo
 contracts.
@@ -10,6 +10,14 @@ contracts.
 - Codex desktop is the primary implementation environment.
 - Editor agents are optional secondary tools.
 - Repo-owned docs carry the durable rules so the workflow survives tool changes.
+
+## Fresh repo bootstrap mode
+- When `BOOTSTRAP-001` is active or the core product docs are still placeholders, prefer
+  defining the manifesto, charter, stack decision, decision log, and first work item before
+  feature work.
+- Strongly recommend this path, but do not hard-block feature work if the user explicitly
+  chooses to skip it.
+- If the user skips, warn once and record assumptions plus bootstrap debt in `work/`.
 
 ## Default implementation loop
 1. Read the relevant docs, contracts, prompts, eval assets, and work artifacts first.
@@ -61,6 +69,8 @@ When asking Codex to work, include:
 
 ## Recommended references
 - `docs/CODEX_FIRST_HOUR.md` (new-user onboarding)
+- `docs/CODEX_SESSION_STARTER.md` when it exists in a freshly bootstrapped repo
+- `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` when bootstrap artifacts still need drafting
 - `docs/NEWCOMER_USABILITY_CHECKLIST.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`

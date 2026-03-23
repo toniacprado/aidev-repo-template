@@ -1,7 +1,7 @@
 # Codex Prompting
-*Version:* v0.6  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.7  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This file captures the prompting patterns that make Codex more reliable in practice.
 
@@ -31,6 +31,10 @@ Practical default:
 - one task that can usually be completed and verified in one focused session
 - explicit non-goals to avoid scope creep
 - clear verification target before editing starts
+
+Fresh-repo rule:
+- if the project manifesto and charter are still placeholders, first ask Codex to draft the
+  product artifacts instead of prompting it to jump straight into implementation
 
 ## Point Codex at the repo, not chat history
 Good prompts usually name the files Codex should read first. Prefer:
@@ -71,6 +75,21 @@ Context: Read AGENTS.md, docs/PROJECT_CHARTER.md, docs/CODEX_PROMPTING.md,
 and work/ACTIVE_TASKS.md.
 Constraints: Keep the change minimal. Do not broaden scope.
 Done when: There is a clear plan, risks are listed, and the work tracker update is defined.
+```
+
+### Bootstrap takeover request
+```text
+Goal: Take over bootstrap and turn this fresh repo into a real first-pass project definition.
+Context: Read AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
+docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
+docs/PROJECT_MANIFESTO.md, docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md,
+docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
+work/items/BOOTSTRAP-001-initialize-project.md.
+Constraints: Stay in bootstrap/spec mode first. Ask a short focused interview if key facts
+are missing. Warn once before any explicit skip, then record assumptions and bootstrap debt
+in `work/`.
+Done when: the core project artifacts are drafted and the first implementation slice is
+defined with verification.
 ```
 
 ### Implementation request

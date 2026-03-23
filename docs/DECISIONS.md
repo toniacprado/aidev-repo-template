@@ -1,5 +1,5 @@
 # Decisions Log
-*Version:* v0.5  
+*Version:* v0.6  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -60,3 +60,16 @@ Use this file to record meaningful product, architecture, or workflow decisions.
   assert the generated handoff behavior instead of only structural cleanup.
 - Revisit when: real template-user trials show the generated guide is still too indirect
   or a more interactive bootstrap flow is justified.
+
+### 2026-03-23 - Bootstrap should generate a Codex session starter, not only docs
+- Decision: fresh repos now generate `docs/CODEX_SESSION_STARTER.md` and
+  `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md`, and the inherited instruction layer strongly
+  recommends bootstrap mode while still allowing an explicit skip.
+- Why: most users will otherwise treat Codex like a one-shot prompt box and jump to
+  feature work before the repo has durable product context.
+- Alternatives considered: leaving the workflow implied in docs only, or hard-blocking
+  feature work until all bootstrap artifacts are complete.
+- Consequences: bootstrap now resets `docs/DECISIONS.md`, onboarding docs must teach the
+  Codex handoff explicitly, and tests must verify the session-starter path.
+- Revisit when: real newcomer trials show the generated prompts are still too indirect
+  or too verbose.

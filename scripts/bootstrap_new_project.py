@@ -38,35 +38,26 @@ def _write_readme(repo_root: Path, project_name: str, project_slug: str, today: 
         structure is ready, but the product definition is still in draft form.
 
         ## Start Here
-        1. Read `docs/BOOTSTRAP_NEXT_STEPS.md`.
-        2. Rewrite `docs/PROJECT_MANIFESTO.md` for the real product.
-        3. Rewrite `docs/PROJECT_CHARTER.md` with the first-release scope and non-goals.
-        4. Decide whether to keep or replace the inherited maintenance stack in
-           `docs/TECH_STACK_SELECTION.md`.
+        1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex.
+        2. Review `docs/BOOTSTRAP_NEXT_STEPS.md`.
+        3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` to help Codex draft the core artifacts.
+        4. Review the generated drafts before moving into feature work.
         5. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`
            before starting the first feature.
+
+        ## Strong Recommendation
+        Even if you already know the product idea, finish the bootstrap artifacts first.
+        They turn your mental model into repo-visible context so later Codex sessions stop
+        guessing. You can skip this path if you insist, but doing so increases assumption
+        risk and should be recorded in `work/`.
 
         ## Current Bootstrap Status
         - Project name initialized as `{project_name}`.
         - Project slug initialized as `{project_slug}`.
         - Template-only work items were removed.
         - Project-facing draft docs were generated for the manifesto, charter, stack
-          decision, and first-session guide.
+          decision, decisions log, and first-session guides.
         - Placeholder text still needs to be replaced before feature work begins.
-
-        ## If You Want Codex To Help
-        Use a prompt shaped like this:
-
-        ```text
-        Goal: Turn the placeholder project docs into a real first-pass spec.
-        Context: Read AGENTS.md, docs/BOOTSTRAP_NEXT_STEPS.md, docs/PROJECT_MANIFESTO.md,
-        docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md, and
-        work/items/BOOTSTRAP-001-initialize-project.md.
-        Constraints: Keep the scope to project-definition docs. Do not start feature
-        implementation yet.
-        Done when: README, manifesto, charter, stack selection, and work tracking reflect
-        the real project.
-        ```
 
         ## Verification
         If you are keeping the template's maintenance stack for now, create a virtual
@@ -101,16 +92,19 @@ def _write_start_here(repo_root: Path, project_name: str, today: str) -> None:
 
         This is the shortest useful path for the first working session in {project_name}.
 
-        ## First Session
-        1. Read `docs/BOOTSTRAP_NEXT_STEPS.md`.
-        2. Rewrite `docs/PROJECT_MANIFESTO.md` so it describes the real user problem.
-        3. Rewrite `docs/PROJECT_CHARTER.md` with scope, users, success metrics, and
-           non-goals.
-        4. Update `docs/TECH_STACK_SELECTION.md` with the actual stack and verification plan.
-        5. Confirm the next real task in `work/items/BOOTSTRAP-001-initialize-project.md`.
+        ## Recommended First Session
+        1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended bootstrap prompt
+           into Codex.
+        2. Keep `docs/BOOTSTRAP_NEXT_STEPS.md` open while Codex works.
+        3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for
+           drafting the manifesto, charter, stack decision, and work items.
+        4. Review the drafted files, correct assumptions, and only then move into feature
+           work.
+        5. If you deliberately skip bootstrap, make sure Codex records assumptions and
+           follow-up artifact debt in `work/`.
 
         ## Guidance To Keep
-        These files stay useful after the product docs are rewritten:
+        These files stay useful after the project docs are rewritten:
         - `AGENTS.md`
         - `docs/AI_DEV_WORKFLOW.md`
         - `docs/CODEX_PROMPTING.md`
@@ -126,6 +120,189 @@ def _write_start_here(repo_root: Path, project_name: str, today: str) -> None:
     _write_text(repo_root / "docs" / "START_HERE.md", start_here)
 
 
+def _write_codex_session_starter(repo_root: Path, project_name: str, today: str) -> None:
+    session_starter = dedent(
+        f"""\
+        # Codex Session Starter
+        *Version:* v0.1
+        *Date:* {today}
+        *Last reviewed:* {today}
+
+        This file is for the human starting the first Codex session in {project_name}. Copy
+        one of the prompts below into Codex instead of starting with a vague one-shot request.
+
+        ## Recommended Prompt
+        Use this unless you have a strong reason to skip bootstrap.
+
+        ```text
+        Goal: Take over bootstrap and turn this fresh repo into a real first-pass
+        project definition.
+        Context: Read AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
+        docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
+        docs/PROJECT_MANIFESTO.md, docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md,
+        docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
+        work/items/BOOTSTRAP-001-initialize-project.md.
+        Constraints: Stay in bootstrap/spec mode first. Strongly recommend finishing the
+        manifesto, charter, tech stack decision, decision log, and first work item before
+        feature implementation. Do not ask me to fill blank forms; interview me with a short
+        focused set of questions, then draft the files directly. If I explicitly choose to skip
+        bootstrap, warn me once about the risk, then proceed and record assumptions and
+        follow-up bootstrap debt in work/.
+        Done when: the core project artifacts are drafted, unknowns are explicit, and the
+        first implementation slice plus verification path are defined in work/.
+        ```
+
+        ## What Good Looks Like
+        - Codex asks a short set of targeted questions instead of waiting for a perfect brief.
+        - Codex drafts the manifesto, charter, stack decision, decision log, and work item.
+        - You review and correct assumptions before feature work begins.
+
+        ## Corrective Prompt
+        If Codex starts implementing features too early, paste this:
+
+        ```text
+        Goal: Stop implementation and switch back to bootstrap mode.
+        Context: Read AGENTS.md, docs/CODEX_SESSION_STARTER.md, docs/BOOTSTRAP_NEXT_STEPS.md,
+        docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md, work/ACTIVE_TASKS.md, and
+        work/items/BOOTSTRAP-001-initialize-project.md.
+        Constraints: Do not implement features yet. Finish the core project artifacts first
+        unless I explicitly tell you to skip bootstrap.
+        Done when: bootstrap artifacts and work tracking are drafted well enough to define the
+        first implementation slice.
+        ```
+
+        ## Skip Path
+        Skipping bootstrap is allowed but not recommended.
+
+        ```text
+        Goal: Start the first feature even though bootstrap artifacts are incomplete.
+        Context: Read AGENTS.md, docs/BOOTSTRAP_NEXT_STEPS.md, work/ACTIVE_TASKS.md, and
+        work/items/BOOTSTRAP-001-initialize-project.md.
+        Constraints: Warn me once that missing manifesto and charter context increases
+        assumption risk. Then proceed only if I confirm. Record the missing artifacts, key
+        assumptions, and a follow-up task in work/. Keep the feature slice small and
+        verifiable.
+        Done when: the first feature slice is defined or implemented, verification is clear,
+        and bootstrap debt is tracked in work/.
+        ```
+        """
+    )
+    _write_text(repo_root / "docs" / "CODEX_SESSION_STARTER.md", session_starter)
+
+
+def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today: str) -> None:
+    workshop = dedent(
+        f"""\
+        # Bootstrap Artifact Workshop
+        *Version:* v0.1
+        *Date:* {today}
+        *Last reviewed:* {today}
+
+        Use this guide to help Codex draft the core artifacts for {project_name}. The goal is
+        not to make you fill a long form. The goal is to help Codex ask short questions,
+        propose sensible wording, and leave the repo with durable context.
+
+        ## Interview Rhythm
+        - Ask 5-8 focused questions, not 25 broad ones.
+        - Group questions by artifact so the conversation feels coherent.
+        - If the user is unsure, propose 2-3 plausible options and mark the chosen one as an
+          assumption.
+        - Draft files directly instead of asking the user to write them from scratch.
+        - End by defining the first implementation slice and verification path in `work/`.
+
+        ## Artifact 1: Manifesto
+        File: `docs/PROJECT_MANIFESTO.md`
+
+        Why it matters:
+        - It explains why the project exists, what promise it makes, and what it will not do.
+
+        Ask questions like:
+        - What concrete problem should this project solve?
+        - Who feels that problem most sharply?
+        - What should users reliably get from the first release?
+        - What tempting expansions should stay out of scope?
+
+        Done when:
+        - A newcomer can read the file and explain the problem, promise, anti-goals, and
+          constraints without extra chat context.
+
+        ## Artifact 2: Charter
+        File: `docs/PROJECT_CHARTER.md`
+
+        Why it matters:
+        - It turns the manifesto into release scope, user definition, success metrics, and
+          risks.
+
+        Ask questions like:
+        - What is the smallest end-to-end workflow that must work first?
+        - Which users matter in the first release?
+        - How will we know the first release is useful?
+        - What should explicitly stay out of scope for now?
+
+        Done when:
+        - The first-release boundary is explicit enough that Codex can propose a thin
+          implementation slice without inventing product scope.
+
+        ## Artifact 3: Tech Stack Selection
+        File: `docs/TECH_STACK_SELECTION.md`
+
+        Why it matters:
+        - It prevents the inherited template tooling from being mistaken for the real product
+          stack.
+
+        Ask questions like:
+        - What platforms or environments must this run on?
+        - What language or framework should own the core logic?
+        - What test runner or verification path should become canonical?
+        - Should the inherited Python maintenance stack stay temporarily or be replaced now?
+
+        Done when:
+        - The main implementation stack and verification path are named, even if a few
+          decisions are provisional.
+
+        ## Artifact 4: Decisions Log
+        File: `docs/DECISIONS.md`
+
+        Why it matters:
+        - It captures meaningful project and workflow decisions so they do not stay implicit.
+
+        Ask questions like:
+        - What is the first real product or architecture decision we are making today?
+        - Why is this choice better than the main alternatives?
+        - What consequence or revisit trigger should be recorded now?
+
+        Done when:
+        - At least one project-specific decision is logged and the template's original
+          decision history is gone from the new repo.
+
+        ## Artifact 5: Work Tracking
+        Files:
+        - `work/ACTIVE_TASKS.md`
+        - `work/items/BOOTSTRAP-001-initialize-project.md`
+
+        Why it matters:
+        - It leaves the next step visible after the first session instead of burying it in
+          chat history.
+
+        Ask questions like:
+        - What is the first thin implementation slice after bootstrap?
+        - What verification should prove that slice worked?
+        - What uncertainty still needs follow-up?
+
+        Done when:
+        - `BOOTSTRAP-001` points at the real next action and the active task list names the
+          first product slice or the remaining bootstrap debt.
+
+        ## Optional During Bootstrap
+        - `prompts/` and `evals/` only need real content now if model behavior will matter in
+          the first release.
+        - `docs/DATA_POLICY.md`, `docs/GUARDRAILS.md`, and `docs/MODEL_POLICY.md` should be
+          tightened early if the product has sensitive data or user-facing model behavior.
+        """
+    )
+    _write_text(repo_root / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md", workshop)
+
+
 def _write_bootstrap_next_steps(
     repo_root: Path, project_name: str, project_slug: str, today: str
 ) -> None:
@@ -136,19 +313,34 @@ def _write_bootstrap_next_steps(
         *Date:* {today}
         *Last reviewed:* {today}
 
-        This guide is the primary post-bootstrap handoff for {project_name}. Complete the
-        steps below before feature work so the repo stops reading like a template and starts
-        reading like your project.
+        This guide is the primary post-bootstrap handoff for {project_name}. It strongly
+        recommends a spec-first bootstrap before feature work, but it does not hard-block you
+        if you choose to skip.
+
+        ## Why This Path Is Recommended
+        Even users who already know the product idea benefit from this flow. The point is not
+        to slow you down. The point is to convert the idea in your head into repo-visible
+        artifacts that later Codex sessions can read, trust, and extend without guessing.
 
         ## What Bootstrap Already Did
         - Renamed the repo landing page to `{project_name}`.
         - Set the project slug to `{project_slug}` in `pyproject.toml`.
-        - Reset `CHANGELOG.md`, `work/ACTIVE_TASKS.md`, and `work/LEARNINGS.md`.
+        - Reset `CHANGELOG.md`, `work/ACTIVE_TASKS.md`, `work/LEARNINGS.md`, and
+          `docs/DECISIONS.md`.
         - Removed template-only work items under `work/items/TEMPLATE-*.md`.
-        - Generated project-draft placeholders for the manifesto, charter, stack decision,
-          and this guide.
+        - Generated project-draft placeholders plus a Codex session starter and artifact
+          workshop.
 
-        ## Complete These Steps Now
+        ## Recommended Path
+        1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex.
+           Use this even if the product idea feels clear already.
+        2. Keep this file open while Codex works.
+        3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for the
+           manifesto, charter, stack decision, decision log, and work tracking.
+        4. Review the drafted files and replace incorrect assumptions.
+        5. Only then move into feature work.
+
+        ## Complete These Artifacts
         1. Rewrite `docs/PROJECT_MANIFESTO.md`.
            Done when: a new contributor can explain why the project exists and what it will
            not do yet.
@@ -157,24 +349,18 @@ def _write_bootstrap_next_steps(
         3. Rewrite `docs/TECH_STACK_SELECTION.md`.
            Done when: the real implementation stack and verification path are named, even if
            some decisions are provisional.
-        4. Replace any remaining placeholder wording in `README.md` and `docs/START_HERE.md`.
-           Done when: the repo no longer presents itself as the template.
+        4. Review `docs/DECISIONS.md`.
+           Done when: it contains project-specific decisions rather than template history.
         5. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`.
            Done when: another contributor can see the next real task without chat history.
 
-        ## If You Want Codex To Do The First Pass
-        Use a prompt like this:
-
-        ```text
-        Goal: Convert the bootstrapped placeholder docs into a real project definition.
-        Context: Read AGENTS.md, docs/BOOTSTRAP_NEXT_STEPS.md, docs/PROJECT_MANIFESTO.md,
-        docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md, and
-        work/items/BOOTSTRAP-001-initialize-project.md.
-        Constraints: Do not start feature implementation. Keep the diff focused on project
-        definition and onboarding clarity.
-        Done when: the project docs, README, and work tracking describe the real product and
-        the next implementation task.
-        ```
+        ## Skip Path
+        Skipping bootstrap is allowed, but do it deliberately.
+        - Tell Codex explicitly that you are skipping bootstrap for now.
+        - Require Codex to warn once about the risk of missing manifesto and charter context.
+        - Require Codex to record assumptions, unresolved product questions, and follow-up
+          bootstrap debt in `work/`.
+        - Revisit the skipped artifacts before broadening scope or adding collaborators.
 
         ## Current Setup Commands
         If you want to keep the template's maintenance stack temporarily, use these commands.
@@ -210,8 +396,8 @@ def _write_bootstrap_next_steps(
         ## Before The First Feature
         - Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
         - Add at least one real decision entry in `docs/DECISIONS.md`.
-        - Make sure `work/ACTIVE_TASKS.md` points at the first product slice, not bootstrap
-          cleanup.
+        - Make sure `work/ACTIVE_TASKS.md` points at the first product slice, not only
+          bootstrap cleanup.
         """
     )
     _write_text(repo_root / "docs" / "BOOTSTRAP_NEXT_STEPS.md", bootstrap_guide)
@@ -306,7 +492,7 @@ def _write_charter(repo_root: Path, project_name: str, today: str) -> None:
         - Replace this with any project-specific rollout or review constraint.
 
         ## Next In Fast Path
-        Open `docs/TECH_STACK_SELECTION.md`, then update
+        Open `docs/TECH_STACK_SELECTION.md`, then update `docs/DECISIONS.md` and
         `work/items/BOOTSTRAP-001-initialize-project.md`.
         """
     )
@@ -357,9 +543,35 @@ def _write_tech_stack_selection(
     _write_text(repo_root / "docs" / "TECH_STACK_SELECTION.md", tech_stack)
 
 
+def _write_decisions(repo_root: Path, project_name: str, today: str) -> None:
+    decisions = dedent(
+        f"""\
+        # Decisions Log
+        *Version:* v0.1
+        *Date:* {today}
+        *Last reviewed:* {today}
+
+        Use this file to record meaningful product, architecture, or workflow decisions.
+
+        ### {today} - Bootstrap stays recommendation-first
+        - Decision: {project_name} should strongly recommend finishing the core bootstrap
+          artifacts before feature work, but allow an explicit skip.
+        - Why: strong repo-visible context improves Codex output quality, but hard blocks
+          encourage users to bypass the workflow entirely.
+        - Alternatives considered: hard-block feature work until all artifacts are complete, or
+          allow silent skipping with no warning.
+        - Consequences: Codex should warn once before a skip, then proceed while recording
+          assumptions and follow-up bootstrap debt in `work/`.
+        - Revisit when: BOOTSTRAP-001 is complete and the first real implementation slice is
+          underway.
+        """
+    )
+    _write_text(repo_root / "docs" / "DECISIONS.md", decisions)
+
+
 def _write_active_tasks(repo_root: Path, project_name: str, today: str) -> None:
     task_title = f"Initialize {project_name} from the Codex-first template"
-    task_next_action = "Open docs/BOOTSTRAP_NEXT_STEPS.md and complete Step 1."
+    task_next_action = "Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt."
     active_tasks = dedent(
         f"""\
         # Active Tasks
@@ -404,7 +616,7 @@ def _write_learnings(repo_root: Path, today: str) -> None:
 
 
 def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> None:
-    item_next_action = "Open docs/BOOTSTRAP_NEXT_STEPS.md and rewrite the manifesto."
+    item_next_action = "Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt."
     bootstrap_item = dedent(
         f"""\
         ---
@@ -426,26 +638,27 @@ def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> Non
 
         ## Summary
         - Replace the remaining placeholder content with the real project's intent, scope,
-          stack, and first task queue.
-        - Use `docs/BOOTSTRAP_NEXT_STEPS.md` as the primary guide until the repo has a real
-          product definition.
+          stack, decision log, and first task queue.
+        - Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the
+          primary guides until the repo has a real product definition.
 
         ## Acceptance Criteria
         - `README.md` describes the real project rather than the template.
         - `docs/PROJECT_MANIFESTO.md` is rewritten for the real product.
         - `docs/PROJECT_CHARTER.md` is rewritten with real scope and non-goals.
         - `docs/TECH_STACK_SELECTION.md` reflects the actual stack decision.
+        - `docs/DECISIONS.md` contains project-specific decisions.
         - `work/ACTIVE_TASKS.md` points at the first non-bootstrap product task.
 
         ## Progress Log
-        - {today}: bootstrap task created from the template with project-draft docs and a
-          guided handoff.
+        - {today}: bootstrap task created from the template with project-draft docs, a Codex
+          session starter, and a guided handoff.
 
         ## Verification
         - not run yet
 
         ## Next Action
-        - Open `docs/BOOTSTRAP_NEXT_STEPS.md` and rewrite `docs/PROJECT_MANIFESTO.md`.
+        - Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt.
 
         ## Notes
         - Review `docs/REPO_BOOTSTRAP_CHECKLIST.md` before the first real feature.
@@ -459,6 +672,25 @@ def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> Non
 def _clear_template_items(repo_root: Path) -> None:
     for item_path in (repo_root / "work" / "items").glob("TEMPLATE-*.md"):
         item_path.unlink()
+
+
+def _rewrite_pyproject(repo_root: Path, project_slug: str) -> None:
+    pyproject_path = repo_root / "pyproject.toml"
+    lines = pyproject_path.read_text(encoding="utf-8").splitlines()
+
+    replaced = False
+    updated_lines: list[str] = []
+    for line in lines:
+        if not replaced and re.match(r'^name\s*=\s*".*"$', line):
+            updated_lines.append(f'name = "{project_slug}"')
+            replaced = True
+        else:
+            updated_lines.append(line)
+
+    if not replaced:
+        raise RuntimeError('Could not update `name = "..."` in pyproject.toml.')
+
+    _write_text(pyproject_path, "\n".join(updated_lines) + "\n")
 
 
 def run_bootstrap(repo_root: Path, project_name: str, project_slug: str | None = None) -> str:
@@ -481,35 +713,19 @@ def run_bootstrap(repo_root: Path, project_name: str, project_slug: str | None =
     _rewrite_pyproject(repo_root, slug)
     _write_changelog(repo_root, project_name, today)
     _write_start_here(repo_root, project_name, today)
+    _write_codex_session_starter(repo_root, project_name, today)
+    _write_bootstrap_artifact_workshop(repo_root, project_name, today)
     _write_bootstrap_next_steps(repo_root, project_name, slug, today)
     _write_manifesto(repo_root, project_name, today)
     _write_charter(repo_root, project_name, today)
     _write_tech_stack_selection(repo_root, project_name, slug, today)
+    _write_decisions(repo_root, project_name, today)
     _write_active_tasks(repo_root, project_name, today)
     _write_learnings(repo_root, today)
     _write_bootstrap_item(repo_root, project_name, today)
     _clear_template_items(repo_root)
 
     return slug
-
-
-def _rewrite_pyproject(repo_root: Path, project_slug: str) -> None:
-    pyproject_path = repo_root / "pyproject.toml"
-    lines = pyproject_path.read_text(encoding="utf-8").splitlines()
-
-    replaced = False
-    updated_lines: list[str] = []
-    for line in lines:
-        if not replaced and re.match(r'^name\s*=\s*".*"$', line):
-            updated_lines.append(f'name = "{project_slug}"')
-            replaced = True
-        else:
-            updated_lines.append(line)
-
-    if not replaced:
-        raise RuntimeError('Could not update `name = "..."` in pyproject.toml.')
-
-    _write_text(pyproject_path, "\n".join(updated_lines) + "\n")
 
 
 def parse_args() -> argparse.Namespace:
@@ -536,11 +752,13 @@ def main() -> int:
 
     print(f"Bootstrap complete for {args.project_name} ({slug}).")
     print("Start here next:")
-    print("  1. docs/BOOTSTRAP_NEXT_STEPS.md")
-    print("  2. docs/PROJECT_MANIFESTO.md")
-    print("  3. docs/PROJECT_CHARTER.md")
-    print("  4. docs/TECH_STACK_SELECTION.md")
-    print("  5. work/items/BOOTSTRAP-001-initialize-project.md")
+    print("  1. docs/CODEX_SESSION_STARTER.md")
+    print("  2. docs/BOOTSTRAP_NEXT_STEPS.md")
+    print("  3. docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md")
+    print("  4. docs/PROJECT_MANIFESTO.md")
+    print("  5. docs/PROJECT_CHARTER.md")
+    print("  6. docs/TECH_STACK_SELECTION.md")
+    print("  7. work/items/BOOTSTRAP-001-initialize-project.md")
     return 0
 
 

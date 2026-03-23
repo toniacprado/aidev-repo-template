@@ -1,9 +1,18 @@
 # Changelog
-*Version:* v1.5  
+*Version:* v1.6  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
 ## Unreleased
+- Added a generated `docs/CODEX_SESSION_STARTER.md` with recommended, corrective, and
+  skip-path prompts so fresh template users can hand the repo to Codex without starting
+  from a vague one-shot request.
+- Added a generated `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` so Codex can interview the
+  user and draft the manifesto, charter, stack decision, decisions log, and work items.
+- Reset `docs/DECISIONS.md` during bootstrap so fresh repos do not inherit template
+  decision history.
+- Updated repo instructions and onboarding docs to strongly recommend bootstrap mode for
+  fresh repos while still allowing explicit skip paths with warnings.
 - Changed bootstrap to generate project-facing draft docs (`README.md`,
   `docs/START_HERE.md`, `docs/PROJECT_MANIFESTO.md`, `docs/PROJECT_CHARTER.md`,
   and `docs/TECH_STACK_SELECTION.md`) instead of leaving template narrative in place.

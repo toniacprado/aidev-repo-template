@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v1.0  
+*Version:* v1.1  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -119,3 +119,12 @@ a single task file.
     with one obvious next-step path, or newcomers lose confidence before doing real work.
   Action or follow-up: keep bootstrap generating project-facing placeholder docs plus a single
     post-bootstrap guide, and validate that flow with real GitHub template runs.
+
+- Date: 2026-03-23
+  Area: Codex bootstrap takeover
+  Learning: first-time users often treat Codex like a one-shot prompt generator unless the repo
+    gives them a concrete first prompt and artifact-by-artifact handoff.
+  Why it matters: without an explicit session starter, users skip directly to feature requests
+    and lose most of the value of the manifesto, charter, decision log, and work tracking.
+  Action or follow-up: keep generating a session starter plus artifact workshop, and validate
+    that new users can hand the repo to Codex without extra out-of-band coaching.

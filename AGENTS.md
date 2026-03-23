@@ -1,7 +1,7 @@
 # AGENTS.md - Rules for AI Coding Agents (Codex-first)
-*Version:* v1.0  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.1  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This repository is designed for Codex-first development. Repository-level instructions
 live here so project norms survive tool changes and can be read directly from disk.
@@ -98,6 +98,19 @@ implementing behavior.
   network off by default unless the task clearly needs more.
 - Treat the Python tooling in this repo as template-maintenance-only, not as a product-stack assumption.
 - Use nested `AGENTS.override.md` files for genuinely different rules in subtrees.
+
+## Fresh repo bootstrap mode
+- If this repo was freshly created from the template and `work/items/BOOTSTRAP-001-initialize-project.md`
+  is still active, or the core product docs still contain obvious placeholders, strongly
+  recommend finishing the bootstrap artifacts before feature implementation.
+- When they exist, start with `docs/CODEX_SESSION_STARTER.md`, `docs/BOOTSTRAP_NEXT_STEPS.md`,
+  and `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` before broad implementation work.
+- Prefer a short focused interview that drafts the core artifacts directly over asking the
+  user to fill blank forms by hand.
+- If the user explicitly wants to skip bootstrap, warn once that implementation quality will
+  be weaker because product intent is not yet durable in the repo.
+- After a skip, proceed if the user confirms, but record assumptions, unresolved product
+  questions, and follow-up bootstrap debt in `work/`.
 
 ---
 

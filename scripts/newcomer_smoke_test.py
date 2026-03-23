@@ -74,17 +74,24 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
         )
         readme = (temp_root / "README.md").read_text(encoding="utf-8")
         active_tasks = (temp_root / "work" / "ACTIVE_TASKS.md").read_text(encoding="utf-8")
+        session_starter = temp_root / "docs" / "CODEX_SESSION_STARTER.md"
+        artifact_workshop = temp_root / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md"
         bootstrap_guide = temp_root / "docs" / "BOOTSTRAP_NEXT_STEPS.md"
         start_here = temp_root / "docs" / "START_HERE.md"
         manifesto = (temp_root / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
+        decisions = (temp_root / "docs" / "DECISIONS.md").read_text(encoding="utf-8")
         bootstrap_item = temp_root / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
         no_template_items = not list((temp_root / "work" / "items").glob("TEMPLATE-*.md"))
         passed = (
             slug == "trial-project"
+            and "docs/CODEX_SESSION_STARTER.md" in readme
             and "Project-facing draft docs were generated" in readme
+            and session_starter.exists()
+            and artifact_workshop.exists()
             and bootstrap_guide.exists()
             and start_here.exists()
             and "Trial Project" in manifesto
+            and "Trial Project should strongly recommend finishing the core bootstrap" in decisions
             and bootstrap_item.exists()
             and "BOOTSTRAP-001" in active_tasks
             and no_template_items
@@ -94,8 +101,8 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
         name="python-bootstrap-behavior",
         passed=passed,
         detail=(
-            "python bootstrap should generate project-draft docs, BOOTSTRAP-001, "
-            "and clear TEMPLATE-* items"
+            "python bootstrap should generate Codex handoff docs, project-draft docs, "
+            "BOOTSTRAP-001, and clear TEMPLATE-* items"
         ),
     )
 
@@ -115,6 +122,27 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
             repo_root / "README.md",
             "docs/CODEX_FIRST_HOUR.md",
             "readme-links-first-hour-guide",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "AGENTS.md",
+            "Fresh repo bootstrap mode",
+            "agents-bootstrap-mode-guidance",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "CODEX_FIRST_HOUR.md",
+            "docs/CODEX_SESSION_STARTER.md",
+            "first-hour-links-session-starter",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "README.md",
+            "docs/CODEX_SESSION_STARTER.md",
+            "readme-links-session-starter",
         )
     )
     checks.append(
