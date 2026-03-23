@@ -45,8 +45,28 @@ function Write-Utf8File {
     Set-Content -Path $Path -Value $Value -Encoding utf8
 }
 
+function Expand-Template {
+    param(
+        [Parameter(Mandatory = $true)][string]$Template,
+        [Parameter(Mandatory = $true)][hashtable]$Replacements
+    )
+
+    $expanded = $Template
+    foreach ($key in $Replacements.Keys) {
+        $expanded = $expanded.Replace("{{${key}}}", [string]$Replacements[$key])
+    }
+
+    return $expanded
+}
+
 if ([string]::IsNullOrWhiteSpace($ProjectSlug)) {
     $ProjectSlug = Convert-ToSlug -Value $ProjectName
+}
+
+$templateValues = @{
+    PROJECT_NAME = $ProjectName
+    PROJECT_SLUG = $ProjectSlug
+    TODAY = $today
 }
 
 @(
@@ -58,10 +78,10 @@ if ([string]::IsNullOrWhiteSpace($ProjectSlug)) {
     'work/items'
 ) | ForEach-Object { Assert-Path -Path $_ }
 
-$readme = @"
-# $ProjectName
+$readmeTemplate = @'
+# {{PROJECT_NAME}}
 
-This repository was bootstrapped from the Codex-first template on $today. The repo
+This repository was bootstrapped from the Codex-first template on {{TODAY}}. The repo
 structure is ready, but the product definition is still in draft form.
 
 ## Start Here
@@ -79,8 +99,8 @@ guessing. You can skip this path if you insist, but doing so increases assumptio
 risk and should be recorded in `work/`.
 
 ## Current Bootstrap Status
-- Project name initialized as `$ProjectName`.
-- Project slug initialized as `$ProjectSlug`.
+- Project name initialized as `{{PROJECT_NAME}}`.
+- Project slug initialized as `{{PROJECT_SLUG}}`.
 - Template-only work items were removed.
 - Project-facing draft docs were generated for the manifesto, charter, stack
   decision, decisions log, and first-session guides.
@@ -89,7 +109,8 @@ risk and should be recorded in `work/`.
 ## Verification
 If you are keeping the template's maintenance stack for now, create a virtual
 environment and run the default checks described in `docs/BOOTSTRAP_NEXT_STEPS.md`.
-"@
+'@
+$readme = Expand-Template -Template $readmeTemplate -Replacements $templateValues
 Write-Utf8File -Path 'README.md' -Value $readme
 
 $pyprojectLines = Get-Content 'pyproject.toml'
@@ -108,24 +129,25 @@ if (-not $replacedProjectName) {
 }
 Write-Utf8File -Path 'pyproject.toml' -Value $updatedPyprojectLines
 
-$changelog = @"
+$changelogTemplate = @'
 # Changelog
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
 ## Unreleased
-- Initialized $ProjectName from the Codex-first repo template.
-"@
+- Initialized {{PROJECT_NAME}} from the Codex-first repo template.
+'@
+$changelog = Expand-Template -Template $changelogTemplate -Replacements $templateValues
 Write-Utf8File -Path 'CHANGELOG.md' -Value $changelog
 
-$startHere = @"
+$startHereTemplate = @'
 # Start Here
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-This is the shortest useful path for the first working session in $ProjectName.
+This is the shortest useful path for the first working session in {{PROJECT_NAME}}.
 
 ## Recommended First Session
 1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended bootstrap prompt
@@ -150,16 +172,17 @@ These files stay useful after the project docs are rewritten:
 ## After This
 Once the project-definition docs are real, choose the first small implementation
 slice and keep docs, tests, and `work/` aligned in the same diff.
-"@
+'@
+$startHere = Expand-Template -Template $startHereTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/START_HERE.md' -Value $startHere
 
-$sessionStarter = @"
+$sessionStarterTemplate = @'
 # Codex Session Starter
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-This file is for the human starting the first Codex session in $ProjectName. Copy
+This file is for the human starting the first Codex session in {{PROJECT_NAME}}. Copy
 one of the prompts below into Codex instead of starting with a vague one-shot request.
 
 ## Recommended Prompt
@@ -215,16 +238,17 @@ verifiable.
 Done when: the first feature slice is defined or implemented, verification is clear,
 and bootstrap debt is tracked in work/.
 ```
-"@
+'@
+$sessionStarter = Expand-Template -Template $sessionStarterTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/CODEX_SESSION_STARTER.md' -Value $sessionStarter
 
-$artifactWorkshop = @"
+$artifactWorkshopTemplate = @'
 # Bootstrap Artifact Workshop
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-Use this guide to help Codex draft the core artifacts for $ProjectName. The goal is
+Use this guide to help Codex draft the core artifacts for {{PROJECT_NAME}}. The goal is
 not to make you fill a long form. The goal is to help Codex ask short questions,
 propose sensible wording, and leave the repo with durable context.
 
@@ -342,16 +366,17 @@ Done when:
   the first release.
 - `docs/DATA_POLICY.md`, `docs/GUARDRAILS.md`, and `docs/MODEL_POLICY.md` should be
   tightened early if the product has sensitive data or user-facing model behavior.
-"@
+'@
+$artifactWorkshop = Expand-Template -Template $artifactWorkshopTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md' -Value $artifactWorkshop
 
-$bootstrapGuide = @"
+$bootstrapGuideTemplate = @'
 # Bootstrap Next Steps
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-This guide is the primary post-bootstrap handoff for $ProjectName. It strongly
+This guide is the primary post-bootstrap handoff for {{PROJECT_NAME}}. It strongly
 recommends a spec-first bootstrap before feature work, but it does not hard-block you
 if you choose to skip.
 
@@ -361,8 +386,8 @@ to slow you down. The point is to convert the idea in your head into repo-visibl
 artifacts that later Codex sessions can read, trust, and extend without guessing.
 
 ## What Bootstrap Already Did
-- Renamed the repo landing page to `$ProjectName`.
-- Set the project slug to `$ProjectSlug` in `pyproject.toml`.
+- Renamed the repo landing page to `{{PROJECT_NAME}}`.
+- Set the project slug to `{{PROJECT_SLUG}}` in `pyproject.toml`.
 - Reset `CHANGELOG.md`, `work/ACTIVE_TASKS.md`, `work/LEARNINGS.md`, and
   `docs/DECISIONS.md`.
 - Removed template-only work items under `work/items/TEMPLATE-*.md`.
@@ -439,20 +464,21 @@ python scripts/newcomer_smoke_test.py
 - Add at least one real decision entry in `docs/DECISIONS.md`.
 - Make sure `work/ACTIVE_TASKS.md` points at the first product slice, not only
   bootstrap cleanup.
-"@
+'@
+$bootstrapGuide = Expand-Template -Template $bootstrapGuideTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/BOOTSTRAP_NEXT_STEPS.md' -Value $bootstrapGuide
 
-$manifesto = @"
+$manifestoTemplate = @'
 # Project Manifesto
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-This draft was generated during bootstrap for $ProjectName. Replace the starter
+This draft was generated during bootstrap for {{PROJECT_NAME}}. Replace the starter
 prompts below with plain-language statements before feature work begins.
 
 ## Why This Exists
-- Replace this with the concrete problem $ProjectName should solve.
+- Replace this with the concrete problem {{PROJECT_NAME}} should solve.
 - Replace this with the user or team who feels that problem most sharply.
 - Replace this with the reason this repo is the right place to solve it.
 
@@ -481,16 +507,17 @@ prompts below with plain-language statements before feature work begins.
 - Replace this with platform, environment, or deployment constraints.
 - Replace this with team-capacity or maintenance constraints.
 - Replace this with data, model, or workflow boundaries that cannot be violated.
-"@
+'@
+$manifesto = Expand-Template -Template $manifestoTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/PROJECT_MANIFESTO.md' -Value $manifesto
 
-$charter = @"
+$charterTemplate = @'
 # Project Charter
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
-This charter is a starter draft for $ProjectName. Replace each placeholder with the
+This charter is a starter draft for {{PROJECT_NAME}}. Replace each placeholder with the
 real first-release boundaries before implementation starts.
 
 ## Scope
@@ -527,20 +554,21 @@ real first-release boundaries before implementation starts.
 ## Next In Fast Path
 Open `docs/TECH_STACK_SELECTION.md`, then update `docs/DECISIONS.md` and
 `work/items/BOOTSTRAP-001-initialize-project.md`.
-"@
+'@
+$charter = Expand-Template -Template $charterTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/PROJECT_CHARTER.md' -Value $charter
 
-$techStack = @"
+$techStackTemplate = @'
 # Tech Stack Selection
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
 This draft records the inherited defaults from the template and the decisions still
-needed for $ProjectName.
+needed for {{PROJECT_NAME}}.
 
 ## Current Inherited Defaults
-- Repo slug: `$ProjectSlug`
+- Repo slug: `{{PROJECT_SLUG}}`
 - Maintenance stack: Python plus `pytest`, `ruff`, and `pre-commit`
 - Repo structure: `docs/`, `work/`, `system/`, `prompts/`, `evals/`, `src/`, and
   `tests/`
@@ -565,19 +593,20 @@ needed for $ProjectName.
 
 ## Next Decision
 - Name the first real implementation slice and the command that should verify it.
-"@
+'@
+$techStack = Expand-Template -Template $techStackTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/TECH_STACK_SELECTION.md' -Value $techStack
 
-$decisions = @"
+$decisionsTemplate = @'
 # Decisions Log
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
 Use this file to record meaningful product, architecture, or workflow decisions.
 
-### ${today} - Bootstrap stays recommendation-first
-- Decision: $ProjectName should strongly recommend finishing the core bootstrap
+### {{TODAY}} - Bootstrap stays recommendation-first
+- Decision: {{PROJECT_NAME}} should strongly recommend finishing the core bootstrap
   artifacts before feature work, but allow an explicit skip.
 - Why: strong repo-visible context improves Codex output quality, but hard blocks
   encourage users to bypass the workflow entirely.
@@ -587,21 +616,22 @@ Use this file to record meaningful product, architecture, or workflow decisions.
   assumptions and follow-up bootstrap debt in `work/`.
 - Revisit when: BOOTSTRAP-001 is complete and the first real implementation slice is
   underway.
-"@
+'@
+$decisions = Expand-Template -Template $decisionsTemplate -Replacements $templateValues
 Write-Utf8File -Path 'docs/DECISIONS.md' -Value $decisions
 
-$activeTasks = @"
+$activeTasksTemplate = @'
 # Active Tasks
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
 This file is the canonical current task list for the repo.
 
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
-| BOOTSTRAP-001 | Initialize $ProjectName from the Codex-first template | todo | human | Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt. | $today |
+| BOOTSTRAP-001 | Initialize {{PROJECT_NAME}} from the Codex-first template | todo | human | Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt. | {{TODAY}} |
 
 ## Rules
 - Update status and next action before ending meaningful work.
@@ -610,23 +640,25 @@ This file is the canonical current task list for the repo.
 - Capture durable discoveries in `work/LEARNINGS.md` when they should influence future
   work.
 - Remove or archive stale rows once the task is truly done.
-"@
+'@
+$activeTasks = Expand-Template -Template $activeTasksTemplate -Replacements $templateValues
 Write-Utf8File -Path 'work/ACTIVE_TASKS.md' -Value $activeTasks
 
-$learnings = @"
+$learningsTemplate = @'
 # Durable Learnings
 *Version:* v0.1
-*Date:* $today
-*Last reviewed:* $today
+*Date:* {{TODAY}}
+*Last reviewed:* {{TODAY}}
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
 
 ## Entries
-"@
+'@
+$learnings = Expand-Template -Template $learningsTemplate -Replacements $templateValues
 Write-Utf8File -Path 'work/LEARNINGS.md' -Value $learnings
 
-$bootstrapItem = @"
+$bootstrapItemTemplate = @'
 ---
 template: work_item
 template_version: 0.4
@@ -634,15 +666,15 @@ template_date: 2026-03-11
 template_last_reviewed: 2026-03-11
 type: work_item
 item_id: BOOTSTRAP-001
-title: Initialize $ProjectName from the Codex-first template
+title: Initialize {{PROJECT_NAME}} from the Codex-first template
 status: todo
 owner: human
-updated: $today
+updated: {{TODAY}}
 next_action: Open docs/CODEX_SESSION_STARTER.md and paste the recommended prompt.
 blocked_on: none
 ---
 
-# Initialize $ProjectName from the Codex-first template
+# Initialize {{PROJECT_NAME}} from the Codex-first template
 
 ## Summary
 - Replace the remaining placeholder content with the real project's landing docs,
@@ -660,7 +692,7 @@ blocked_on: none
 - `work/ACTIVE_TASKS.md` points at the first non-bootstrap product task.
 
 ## Progress Log
-- ${today}: bootstrap task created from the template with project-draft docs, a Codex
+- {{TODAY}}: bootstrap task created from the template with project-draft docs, a Codex
   session starter, and a guided handoff.
 
 ## Verification
@@ -672,7 +704,8 @@ blocked_on: none
 ## Notes
 - Review `docs/REPO_BOOTSTRAP_CHECKLIST.md` before the first real feature.
 - Keep placeholder wording only long enough to decide the real product definition.
-"@
+'@
+$bootstrapItem = Expand-Template -Template $bootstrapItemTemplate -Replacements $templateValues
 Write-Utf8File -Path 'work/items/BOOTSTRAP-001-initialize-project.md' -Value $bootstrapItem
 
 Get-ChildItem -Path 'work/items' -Filter 'TEMPLATE-*.md' -File | ForEach-Object {

@@ -1,9 +1,12 @@
 # Changelog
-*Version:* v1.6  
+*Version:* v1.7  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
 ## Unreleased
+- Fixed `scripts/bootstrap_new_project.ps1` so markdown-heavy generated docs are built from
+  literal templates plus explicit token expansion instead of PowerShell-expandable
+  here-strings that break on `pwsh` runners.
 - Fixed the generated bootstrap takeover path so Codex is explicitly told to rewrite
   `README.md` and `docs/START_HERE.md`, not only the deeper project artifacts.
 - Updated `AGENTS.md` to mark bootstrap as a one-time reset for fresh template copies

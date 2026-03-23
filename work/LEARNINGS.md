@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v1.2  
+*Version:* v1.3  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -139,3 +139,13 @@ a single task file.
     artifacts are correct.
   Action or follow-up: keep landing-doc rewrite expectations and no-rerun guidance covered by
     automated tests before every real template trial.
+
+- Date: 2026-03-23
+  Area: PowerShell bootstrap generation
+  Learning: expandable PowerShell here-strings are a poor fit for markdown-heavy generated
+    docs because inline code spans and fenced code blocks use backticks that `pwsh` treats as
+    escapes.
+  Why it matters: a script can look correct in review and still fail only on Linux or Windows
+    runners where PowerShell is actually available, blocking protected-branch merges.
+  Action or follow-up: keep PowerShell bootstrap content in literal templates with explicit
+    token expansion, and treat cross-shell CI as mandatory before template trials.

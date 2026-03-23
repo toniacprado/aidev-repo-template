@@ -38,6 +38,9 @@ blocked_on: none
 - 2026-03-23: updated `AGENTS.md` so Codex treats bootstrap as a one-time reset and does
   not suggest rerunning it after completion.
 - 2026-03-23: extended automated coverage and reran the local verification stack successfully.
+- 2026-03-23: fixed a PowerShell bootstrap regression that broke CI on `pwsh` runners by
+  replacing expandable markdown-heavy here-strings with literal templates plus explicit token
+  expansion.
 
 ## Verification
 - `./.venv/bin/ruff format .`
@@ -47,8 +50,8 @@ blocked_on: none
 - `./.venv/bin/python scripts/newcomer_smoke_test.py`
 
 ## Next Action
-- Run a fresh GitHub `Use this template` trial from the branch-backed PR and verify the
-  generated session starter rewrites the landing docs cleanly.
+- Wait for the repaired branch CI to pass, then run a fresh GitHub `Use this template`
+  trial and verify the generated session starter rewrites the landing docs cleanly.
 
 ## Notes
 - Keep the fix narrowly scoped to the blocking review findings so the template trial is
