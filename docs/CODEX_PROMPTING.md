@@ -1,5 +1,5 @@
 # Codex Prompting
-*Version:* v0.7  
+*Version:* v0.8  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -80,7 +80,7 @@ Done when: There is a clear plan, risks are listed, and the work tracker update 
 ### Bootstrap takeover request
 ```text
 Goal: Take over bootstrap and turn this fresh repo into a real first-pass project definition.
-Context: Read AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
+Context: Read README.md, AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
 docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
 docs/PROJECT_MANIFESTO.md, docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md,
 docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
@@ -88,8 +88,8 @@ work/items/BOOTSTRAP-001-initialize-project.md.
 Constraints: Stay in bootstrap/spec mode first. Ask a short focused interview if key facts
 are missing. Warn once before any explicit skip, then record assumptions and bootstrap debt
 in `work/`.
-Done when: the core project artifacts are drafted and the first implementation slice is
-defined with verification.
+Done when: README.md, docs/START_HERE.md, the core project artifacts, and the first
+implementation slice are defined with verification.
 ```
 
 ### Implementation request

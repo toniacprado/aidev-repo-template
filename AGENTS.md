@@ -1,5 +1,5 @@
 # AGENTS.md - Rules for AI Coding Agents (Codex-first)
-*Version:* v1.1  
+*Version:* v1.2  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -107,6 +107,9 @@ implementing behavior.
   and `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` before broad implementation work.
 - Prefer a short focused interview that drafts the core artifacts directly over asking the
   user to fill blank forms by hand.
+- Do not suggest rerunning `scripts/bootstrap_new_project.py` or
+  `scripts/bootstrap_new_project.ps1` after bootstrap has already completed unless the user
+  explicitly asks to reset the repo state.
 - If the user explicitly wants to skip bootstrap, warn once that implementation quality will
   be weaker because product intent is not yet durable in the repo.
 - After a skip, proceed if the user confirms, but record assumptions, unresolved product
@@ -132,7 +135,7 @@ implementing behavior.
 These are maintenance commands for the template itself, not a claim about the downstream
 project stack.
 
-- Bootstrap (cross-platform): `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux)
+- Bootstrap (one-time reset for a fresh template copy): `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux)
 - Setup (macOS/Linux): `python3 -m venv .venv`, `source .venv/bin/activate`, `python -m pip install --upgrade pip`, then `python -m pip install -e ".[dev]"`
 - Setup (Windows PowerShell): `python -m venv .venv`, `.\.venv\Scripts\Activate.ps1`, `python -m pip install --upgrade pip`, then `python -m pip install -e ".[dev]"`
 - Format: `ruff format .`

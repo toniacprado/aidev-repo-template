@@ -4,6 +4,10 @@
 *Last reviewed:* 2026-03-23
 
 ## Unreleased
+- Fixed the generated bootstrap takeover path so Codex is explicitly told to rewrite
+  `README.md` and `docs/START_HERE.md`, not only the deeper project artifacts.
+- Updated `AGENTS.md` to mark bootstrap as a one-time reset for fresh template copies
+  and to tell Codex not to suggest rerunning bootstrap after it has already completed.
 - Added a generated `docs/CODEX_SESSION_STARTER.md` with recommended, corrective, and
   skip-path prompts so fresh template users can hand the repo to Codex without starting
   from a vague one-shot request.

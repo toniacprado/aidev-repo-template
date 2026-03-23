@@ -1,5 +1,5 @@
 # Active Tasks
-*Version:* v1.8  
+*Version:* v2.0  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -8,6 +8,7 @@ This file is the canonical current task list for the repo.
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
+| TEMPLATE-012 | Fix ship-blocking bootstrap handoff gaps before template trial | done | codex | Run a fresh GitHub `Use this template` trial from the branch-backed PR and verify the generated session starter rewrites the landing docs cleanly | 2026-03-23 |
 | TEMPLATE-011 | Add guided Codex bootstrap takeover with strong recommendations and skip path | done | codex | Run one fresh GitHub `Use this template` flow and confirm a new user can hand the repo to Codex with the generated session starter alone | 2026-03-23 |
 | TEMPLATE-010 | Make post-bootstrap onboarding project-facing and explicit for first-time users | done | codex | Run one fresh GitHub `Use this template` flow and confirm the generated handoff docs are clear without extra chat guidance | 2026-03-23 |
 | TEMPLATE-009 | Reduce onboarding friction and harden release/CI reliability | done | codex | Run one throwaway `Use this template` flow and measure newcomer completion time | 2026-03-12 |

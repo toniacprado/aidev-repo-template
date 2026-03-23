@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v1.1  
+*Version:* v1.2  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -128,3 +128,14 @@ a single task file.
     and lose most of the value of the manifesto, charter, decision log, and work tracking.
   Action or follow-up: keep generating a session starter plus artifact workshop, and validate
     that new users can hand the repo to Codex without extra out-of-band coaching.
+
+- Date: 2026-03-23
+  Area: bootstrap due diligence
+  Learning: a passing bootstrap flow can still miss the most visible user-facing gap if the
+    generated session starter does not explicitly rewrite the landing docs or if inherited
+    instructions still imply bootstrap can be rerun casually.
+  Why it matters: the first files users and Codex reopen shape trust quickly; placeholder
+    landing docs or redundant reset suggestions create avoidable confusion even when deeper
+    artifacts are correct.
+  Action or follow-up: keep landing-doc rewrite expectations and no-rerun guidance covered by
+    automated tests before every real template trial.

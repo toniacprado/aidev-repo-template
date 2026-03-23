@@ -137,19 +137,19 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
         ```text
         Goal: Take over bootstrap and turn this fresh repo into a real first-pass
         project definition.
-        Context: Read AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
+        Context: Read README.md, AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
         docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
         docs/PROJECT_MANIFESTO.md, docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md,
         docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
         work/items/BOOTSTRAP-001-initialize-project.md.
         Constraints: Stay in bootstrap/spec mode first. Strongly recommend finishing the
-        manifesto, charter, tech stack decision, decision log, and first work item before
-        feature implementation. Do not ask me to fill blank forms; interview me with a short
-        focused set of questions, then draft the files directly. If I explicitly choose to skip
-        bootstrap, warn me once about the risk, then proceed and record assumptions and
-        follow-up bootstrap debt in work/.
-        Done when: the core project artifacts are drafted, unknowns are explicit, and the
-        first implementation slice plus verification path are defined in work/.
+        landing docs, manifesto, charter, tech stack decision, decision log, and first work
+        item before feature implementation. Do not ask me to fill blank forms; interview me
+        with a short focused set of questions, then draft the files directly. If I explicitly
+        choose to skip bootstrap, warn me once about the risk, then proceed and record
+        assumptions and follow-up bootstrap debt in work/.
+        Done when: README.md, docs/START_HERE.md, the core project artifacts, and the first
+        implementation slice plus verification path are defined in work/.
         ```
 
         ## What Good Looks Like
@@ -226,7 +226,25 @@ def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today
         - A newcomer can read the file and explain the problem, promise, anti-goals, and
           constraints without extra chat context.
 
-        ## Artifact 2: Charter
+        ## Artifact 2: Landing Docs
+        Files:
+        - `README.md`
+        - `docs/START_HERE.md`
+
+        Why it matters:
+        - They are the first files a human and many AI sessions will open, so leaving them in
+          draft-template language weakens everything that follows.
+
+        Ask questions like:
+        - How should the project be described in one short paragraph?
+        - What should a brand-new contributor do first?
+        - Which generated bootstrap guides should stay visible until the product docs are real?
+
+        Done when:
+        - The README and start-here guide describe the real project and point at the current
+          recommended workflow instead of sounding like template scaffolding.
+
+        ## Artifact 3: Charter
         File: `docs/PROJECT_CHARTER.md`
 
         Why it matters:
@@ -243,7 +261,7 @@ def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today
         - The first-release boundary is explicit enough that Codex can propose a thin
           implementation slice without inventing product scope.
 
-        ## Artifact 3: Tech Stack Selection
+        ## Artifact 4: Tech Stack Selection
         File: `docs/TECH_STACK_SELECTION.md`
 
         Why it matters:
@@ -260,7 +278,7 @@ def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today
         - The main implementation stack and verification path are named, even if a few
           decisions are provisional.
 
-        ## Artifact 4: Decisions Log
+        ## Artifact 5: Decisions Log
         File: `docs/DECISIONS.md`
 
         Why it matters:
@@ -275,7 +293,7 @@ def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today
         - At least one project-specific decision is logged and the template's original
           decision history is gone from the new repo.
 
-        ## Artifact 5: Work Tracking
+        ## Artifact 6: Work Tracking
         Files:
         - `work/ACTIVE_TASKS.md`
         - `work/items/BOOTSTRAP-001-initialize-project.md`
@@ -341,17 +359,20 @@ def _write_bootstrap_next_steps(
         5. Only then move into feature work.
 
         ## Complete These Artifacts
-        1. Rewrite `docs/PROJECT_MANIFESTO.md`.
+        1. Rewrite `README.md` and `docs/START_HERE.md`.
+           Done when: the first files a newcomer opens describe the real project and current
+           workflow instead of the generated draft state.
+        2. Rewrite `docs/PROJECT_MANIFESTO.md`.
            Done when: a new contributor can explain why the project exists and what it will
            not do yet.
-        2. Rewrite `docs/PROJECT_CHARTER.md`.
+        3. Rewrite `docs/PROJECT_CHARTER.md`.
            Done when: scope, users, success metrics, and non-goals are explicit.
-        3. Rewrite `docs/TECH_STACK_SELECTION.md`.
+        4. Rewrite `docs/TECH_STACK_SELECTION.md`.
            Done when: the real implementation stack and verification path are named, even if
            some decisions are provisional.
-        4. Review `docs/DECISIONS.md`.
+        5. Review `docs/DECISIONS.md`.
            Done when: it contains project-specific decisions rather than template history.
-        5. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`.
+        6. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`.
            Done when: another contributor can see the next real task without chat history.
 
         ## Skip Path
@@ -637,13 +658,14 @@ def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> Non
         # Initialize {project_name} from the Codex-first template
 
         ## Summary
-        - Replace the remaining placeholder content with the real project's intent, scope,
-          stack, decision log, and first task queue.
+        - Replace the remaining placeholder content with the real project's landing docs,
+          intent, scope, stack, decision log, and first task queue.
         - Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the
           primary guides until the repo has a real product definition.
 
         ## Acceptance Criteria
         - `README.md` describes the real project rather than the template.
+        - `docs/START_HERE.md` reflects the real project workflow rather than the generated draft.
         - `docs/PROJECT_MANIFESTO.md` is rewritten for the real product.
         - `docs/PROJECT_CHARTER.md` is rewritten with real scope and non-goals.
         - `docs/TECH_STACK_SELECTION.md` reflects the actual stack decision.

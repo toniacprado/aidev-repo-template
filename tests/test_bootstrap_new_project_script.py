@@ -86,6 +86,8 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "Take over bootstrap and turn this fresh repo into a real first-pass" in (
         session_starter
     )
+    assert "Context: Read README.md, AGENTS.md" in session_starter
+    assert "Done when: README.md, docs/START_HERE.md" in session_starter
     assert "Skipping bootstrap is allowed but not recommended." in session_starter
 
     artifact_workshop = (tmp_path / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md").read_text(
@@ -94,12 +96,14 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "Use this guide to help Codex draft the core artifacts for Acme Platform." in (
         artifact_workshop
     )
-    assert "## Artifact 4: Decisions Log" in artifact_workshop
+    assert "## Artifact 2: Landing Docs" in artifact_workshop
+    assert "## Artifact 5: Decisions Log" in artifact_workshop
 
     bootstrap_guide = (tmp_path / "docs" / "BOOTSTRAP_NEXT_STEPS.md").read_text(encoding="utf-8")
     assert "This guide is the primary post-bootstrap handoff for Acme Platform." in bootstrap_guide
     assert "recommends a spec-first bootstrap before feature work" in bootstrap_guide
     assert "Set the project slug to `acme-platform` in `pyproject.toml`." in bootstrap_guide
+    assert "1. Rewrite `README.md` and `docs/START_HERE.md`." in bootstrap_guide
     assert "## Skip Path" in bootstrap_guide
 
     manifesto = (tmp_path / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
@@ -131,6 +135,7 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the" in (
         bootstrap_item_text
     )
+    assert "`docs/START_HERE.md` reflects the real project workflow" in bootstrap_item_text
     assert f"updated: {today}" in bootstrap_item_text
     assert (
         f"- {today}: bootstrap task created from the template with project-draft docs, a Codex"
