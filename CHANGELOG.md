@@ -1,9 +1,32 @@
 # Changelog
-*Version:* v1.4  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.7  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 ## Unreleased
+- Fixed `scripts/bootstrap_new_project.ps1` so markdown-heavy generated docs are built from
+  literal templates plus explicit token expansion instead of PowerShell-expandable
+  here-strings that break on `pwsh` runners.
+- Fixed the generated bootstrap takeover path so Codex is explicitly told to rewrite
+  `README.md` and `docs/START_HERE.md`, not only the deeper project artifacts.
+- Updated `AGENTS.md` to mark bootstrap as a one-time reset for fresh template copies
+  and to tell Codex not to suggest rerunning bootstrap after it has already completed.
+- Added a generated `docs/CODEX_SESSION_STARTER.md` with recommended, corrective, and
+  skip-path prompts so fresh template users can hand the repo to Codex without starting
+  from a vague one-shot request.
+- Added a generated `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` so Codex can interview the
+  user and draft the manifesto, charter, stack decision, decisions log, and work items.
+- Reset `docs/DECISIONS.md` during bootstrap so fresh repos do not inherit template
+  decision history.
+- Updated repo instructions and onboarding docs to strongly recommend bootstrap mode for
+  fresh repos while still allowing explicit skip paths with warnings.
+- Changed bootstrap to generate project-facing draft docs (`README.md`,
+  `docs/START_HERE.md`, `docs/PROJECT_MANIFESTO.md`, `docs/PROJECT_CHARTER.md`,
+  and `docs/TECH_STACK_SELECTION.md`) instead of leaving template narrative in place.
+- Added a generated `docs/BOOTSTRAP_NEXT_STEPS.md` guide so fresh repos have one obvious
+  post-bootstrap handoff.
+- Expanded bootstrap tests and newcomer smoke checks to enforce the guided handoff
+  behavior.
 - Clarified README setup guidance with separate paths for template maintainers vs
   downstream users.
 - Simplified onboarding from a long linear doc index into a fast 5-step path plus

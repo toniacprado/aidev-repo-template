@@ -1,7 +1,7 @@
 # Durable Learnings
-*Version:* v0.9  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.3  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
@@ -109,3 +109,43 @@ a single task file.
   Why it matters: template confidence depends on proving behavior, not only presence of assets.
   Action or follow-up: keep at least one deterministic behavioral check in newcomer smoke tests
     (bootstrap execution on temp scaffold).
+
+- Date: 2026-03-23
+  Area: post-bootstrap onboarding
+  Learning: resetting names and task files is not enough; if bootstrap leaves the README and
+    product docs speaking as the template, first-time users assume the repo is unfinished or
+    broken.
+  Why it matters: the generated repo must immediately read like "your project in draft mode"
+    with one obvious next-step path, or newcomers lose confidence before doing real work.
+  Action or follow-up: keep bootstrap generating project-facing placeholder docs plus a single
+    post-bootstrap guide, and validate that flow with real GitHub template runs.
+
+- Date: 2026-03-23
+  Area: Codex bootstrap takeover
+  Learning: first-time users often treat Codex like a one-shot prompt generator unless the repo
+    gives them a concrete first prompt and artifact-by-artifact handoff.
+  Why it matters: without an explicit session starter, users skip directly to feature requests
+    and lose most of the value of the manifesto, charter, decision log, and work tracking.
+  Action or follow-up: keep generating a session starter plus artifact workshop, and validate
+    that new users can hand the repo to Codex without extra out-of-band coaching.
+
+- Date: 2026-03-23
+  Area: bootstrap due diligence
+  Learning: a passing bootstrap flow can still miss the most visible user-facing gap if the
+    generated session starter does not explicitly rewrite the landing docs or if inherited
+    instructions still imply bootstrap can be rerun casually.
+  Why it matters: the first files users and Codex reopen shape trust quickly; placeholder
+    landing docs or redundant reset suggestions create avoidable confusion even when deeper
+    artifacts are correct.
+  Action or follow-up: keep landing-doc rewrite expectations and no-rerun guidance covered by
+    automated tests before every real template trial.
+
+- Date: 2026-03-23
+  Area: PowerShell bootstrap generation
+  Learning: expandable PowerShell here-strings are a poor fit for markdown-heavy generated
+    docs because inline code spans and fenced code blocks use backticks that `pwsh` treats as
+    escapes.
+  Why it matters: a script can look correct in review and still fail only on Linux or Windows
+    runners where PowerShell is actually available, blocking protected-branch merges.
+  Action or follow-up: keep PowerShell bootstrap content in literal templates with explicit
+    token expansion, and treat cross-shell CI as mandatory before template trials.

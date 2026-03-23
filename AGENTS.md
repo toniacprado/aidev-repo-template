@@ -1,7 +1,7 @@
 # AGENTS.md - Rules for AI Coding Agents (Codex-first)
-*Version:* v1.0  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.2  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This repository is designed for Codex-first development. Repository-level instructions
 live here so project norms survive tool changes and can be read directly from disk.
@@ -99,6 +99,22 @@ implementing behavior.
 - Treat the Python tooling in this repo as template-maintenance-only, not as a product-stack assumption.
 - Use nested `AGENTS.override.md` files for genuinely different rules in subtrees.
 
+## Fresh repo bootstrap mode
+- If this repo was freshly created from the template and `work/items/BOOTSTRAP-001-initialize-project.md`
+  is still active, or the core product docs still contain obvious placeholders, strongly
+  recommend finishing the bootstrap artifacts before feature implementation.
+- When they exist, start with `docs/CODEX_SESSION_STARTER.md`, `docs/BOOTSTRAP_NEXT_STEPS.md`,
+  and `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` before broad implementation work.
+- Prefer a short focused interview that drafts the core artifacts directly over asking the
+  user to fill blank forms by hand.
+- Do not suggest rerunning `scripts/bootstrap_new_project.py` or
+  `scripts/bootstrap_new_project.ps1` after bootstrap has already completed unless the user
+  explicitly asks to reset the repo state.
+- If the user explicitly wants to skip bootstrap, warn once that implementation quality will
+  be weaker because product intent is not yet durable in the repo.
+- After a skip, proceed if the user confirms, but record assumptions, unresolved product
+  questions, and follow-up bootstrap debt in `work/`.
+
 ---
 
 ## AI workflow rules
@@ -119,7 +135,7 @@ implementing behavior.
 These are maintenance commands for the template itself, not a claim about the downstream
 project stack.
 
-- Bootstrap (cross-platform): `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux)
+- Bootstrap (one-time reset for a fresh template copy): `python scripts/bootstrap_new_project.py --project-name "Your Project"` (or `python3` if needed before venv activation on macOS/Linux)
 - Setup (macOS/Linux): `python3 -m venv .venv`, `source .venv/bin/activate`, `python -m pip install --upgrade pip`, then `python -m pip install -e ".[dev]"`
 - Setup (Windows PowerShell): `python -m venv .venv`, `.\.venv\Scripts\Activate.ps1`, `python -m pip install --upgrade pip`, then `python -m pip install -e ".[dev]"`
 - Format: `ruff format .`

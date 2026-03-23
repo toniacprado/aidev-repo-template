@@ -1,7 +1,7 @@
 # Codex First Hour
-*Version:* v0.5  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v0.6  
+*Date:* 2026-03-23  
+*Last reviewed:* 2026-03-23
 
 This guide is for first-time Codex users who want a clean, high-signal start.
 
@@ -17,6 +17,9 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 
 ## Step 2: Load repo context (10 minutes)
 - Ask Codex to read `AGENTS.md` and `docs/START_HERE.md` first.
+- If this repo was freshly bootstrapped from the template and `docs/CODEX_SESSION_STARTER.md`
+  exists, paste its recommended prompt into Codex instead of starting from a blank one-shot
+  request.
 - Then point it at the specific files for your task.
 - Keep prompts in this shape: goal, context, constraints, done-when.
 
@@ -53,6 +56,7 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 
 ## New-user pitfalls to avoid
 - Starting with a huge ambiguous prompt.
+- Treating Codex like a one-shot generator before the repo has durable product artifacts.
 - Changing code without naming files and constraints.
 - Trusting a successful edit without verification.
 - Ending a session without updating `work/`.
