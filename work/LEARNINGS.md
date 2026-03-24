@@ -1,7 +1,7 @@
 # Durable Learnings
-*Version:* v1.3  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.4  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
@@ -149,3 +149,13 @@ a single task file.
     runners where PowerShell is actually available, blocking protected-branch merges.
   Action or follow-up: keep PowerShell bootstrap content in literal templates with explicit
     token expansion, and treat cross-shell CI as mandatory before template trials.
+
+- Date: 2026-03-24
+  Area: context engineering
+  Learning: durable repo memory is necessary but not sufficient; the template also needs a
+    clear policy for loading the smallest relevant context set and compacting long sessions
+    back into `work/`.
+  Why it matters: without context packs and compaction rules, agents still over-read, lose
+    focus, and depend too heavily on long chat transcripts even when the repo has strong docs.
+  Action or follow-up: keep `docs/CONTEXT_ENGINEERING.md`, bootstrap handoff prompts, and
+    smoke checks aligned around task-specific context packs and repo-visible compaction.

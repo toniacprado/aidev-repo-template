@@ -1,7 +1,7 @@
 # Newcomer Usability Checklist
-*Version:* v0.4  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v0.5  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 Use this checklist before calling the template "ready for first-time Codex users."
 
@@ -10,7 +10,7 @@ Use this checklist before calling the template "ready for first-time Codex users
 - Expected: all required checks pass.
 
 ## Manual first-hour walkthrough
-1. Start with `docs/START_HERE.md` and `docs/CODEX_FIRST_HOUR.md`.
+1. Start with `docs/START_HERE.md`, `docs/CODEX_FIRST_HOUR.md`, and `docs/CONTEXT_ENGINEERING.md`.
 2. Run bootstrap on your OS:
    - `python3 scripts/bootstrap_new_project.py --project-name "Trial Project"` (macOS/Linux)
    - `python scripts/bootstrap_new_project.py --project-name "Trial Project"` (Windows)
@@ -20,13 +20,17 @@ Use this checklist before calling the template "ready for first-time Codex users
    by drafting the core artifacts or explicitly offers the skip path with warnings.
 5. Confirm the generated manifesto/charter/stack/decision docs are project-facing drafts
    rather than template narrative.
-6. Ask Codex for a plan on one small task (`/plan`).
+6. Ask Codex for a plan on one small task (`/plan`) using only the smallest relevant context
+   pack rather than a broad repo preload.
 7. Implement one thin slice with verification.
 8. Ask for a review pass (`/review`).
 9. Confirm handoff state in `work/ACTIVE_TASKS.md`.
+10. If the session became long, confirm the durable state was compacted back into `work/`
+    rather than left only in chat.
 
 ## Pass criteria
 - New user can complete one end-to-end task without relying on hidden chat context.
+- New user can choose an appropriate context pack without being told to read the whole repo.
 - Prompt/eval assets and deterministic eval checks are understandable and runnable.
 - Task state and next action are visible in `work/`.
 

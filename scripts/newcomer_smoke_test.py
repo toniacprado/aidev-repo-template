@@ -92,11 +92,15 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
             and artifact_workshop.exists()
             and bootstrap_guide.exists()
             and "docs/CODEX_SESSION_STARTER.md" in start_here
+            and "docs/CONTEXT_ENGINEERING.md" in start_here
             and "Trial Project" in manifesto
             and "Trial Project should strongly recommend finishing the core bootstrap" in decisions
-            and "Context: Read README.md, AGENTS.md" in session_starter_text
+            and "Context: Read README.md, AGENTS.md, docs/CONTEXT_ENGINEERING.md"
+            in session_starter_text
             and "## Artifact 2: Landing Docs" in artifact_workshop_text
+            and "docs/CONTEXT_ENGINEERING.md" in bootstrap_guide.read_text(encoding="utf-8")
             and bootstrap_item.exists()
+            and "docs/CONTEXT_ENGINEERING.md" in bootstrap_item.read_text(encoding="utf-8")
             and "BOOTSTRAP-001" in active_tasks
             and no_template_items
         )
@@ -129,6 +133,12 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
         )
     )
     checks.append(
+        _check_path_exists(
+            repo_root / "docs" / "CONTEXT_ENGINEERING.md",
+            "context-engineering-doc",
+        )
+    )
+    checks.append(
         _check_file_contains(
             repo_root / "AGENTS.md",
             "Fresh repo bootstrap mode",
@@ -144,9 +154,23 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
     )
     checks.append(
         _check_file_contains(
+            repo_root / "AGENTS.md",
+            "docs/CONTEXT_ENGINEERING.md",
+            "agents-links-context-guide",
+        )
+    )
+    checks.append(
+        _check_file_contains(
             repo_root / "docs" / "CODEX_FIRST_HOUR.md",
             "docs/CODEX_SESSION_STARTER.md",
             "first-hour-links-session-starter",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "CODEX_FIRST_HOUR.md",
+            "docs/CONTEXT_ENGINEERING.md",
+            "first-hour-links-context-guide",
         )
     )
     checks.append(
@@ -159,8 +183,22 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
     checks.append(
         _check_file_contains(
             repo_root / "README.md",
+            "docs/CONTEXT_ENGINEERING.md",
+            "readme-links-context-guide",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "README.md",
             "bootstrap_new_project.py",
             "readme-links-cross-platform-bootstrap",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "TASK_MANAGEMENT.md",
+            "Compaction checkpoints",
+            "task-management-compaction-guidance",
         )
     )
     checks.append(
