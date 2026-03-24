@@ -1,7 +1,7 @@
 # Template Maintenance
-*Version:* v0.9  
-*Date:* 2026-03-12  
-*Last reviewed:* 2026-03-12
+*Version:* v1.0  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This file explains what is required to maintain the template itself.
 
@@ -15,6 +15,7 @@ Even without a local Python toolchain, Codex can still:
 - review and improve docs
 - update repo structure and policies
 - maintain `AGENTS.md`, `CLAUDE.md`, and `work/`
+- follow the retrieval and compaction rules in `docs/CONTEXT_ENGINEERING.md`
 - inspect files and reason about consistency
 - run lightweight repo-local structural checks through the shell
 
@@ -67,6 +68,11 @@ python scripts/newcomer_smoke_test.py
 
 If `python` is not found on macOS/Linux, use `python3` to create the virtual
 environment and then run commands after activation.
+
+## Maintenance workflow reminder
+- Start with `docs/CONTEXT_ENGINEERING.md` instead of preloading every maintenance doc.
+- Update version/date/review stamps when materially editing Markdown guidance files.
+- When the instruction layer changes, update the most relevant smoke checks in the same diff.
 
 ## If you do not want Python
 That is still a valid choice.

@@ -1,9 +1,12 @@
 # Changelog
-*Version:* v1.8  
+*Version:* v1.9  
 *Date:* 2026-03-24  
 *Last reviewed:* 2026-03-24
 
 ## Unreleased
+- Cleaned up doc hygiene after the context-engineering rollout by fixing stale metadata
+  and aligning the remaining onboarding and maintenance docs with the context-pack
+  workflow.
 - Added `docs/CONTEXT_ENGINEERING.md` and switched the default instruction flow from a
   broad ordered read list to task-specific context packs plus just-in-time retrieval.
 - Updated onboarding, bootstrap handoff guidance, and shared prompt assets to teach

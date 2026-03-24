@@ -1,7 +1,7 @@
 # AI Dev Repo Template
-*Version:* v1.8  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.9  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This repository is a starter template for teams who want a reusable AI development
 baseline with Codex-first workflow standards, without making the project dependent on
@@ -40,8 +40,8 @@ If you are a user starting a new project from this template:
 4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
 5. Open the generated `docs/CODEX_SESSION_STARTER.md` in the new repo and paste the
    recommended prompt into Codex.
-6. Keep the generated `docs/BOOTSTRAP_NEXT_STEPS.md` open while Codex drafts the core
-   artifacts.
+6. Keep the generated `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md`
+   open while Codex drafts the core artifacts.
 7. Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
 
 Fallback (if GitHub template flow is unavailable):
@@ -51,7 +51,8 @@ Fallback (if GitHub template flow is unavailable):
 4. Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
 5. Open the generated `docs/CODEX_SESSION_STARTER.md` in the new repo and paste the
    recommended prompt into Codex.
-6. Review the generated `docs/BOOTSTRAP_NEXT_STEPS.md` in the new repo.
+6. Review the generated `docs/CONTEXT_ENGINEERING.md` and
+   `docs/BOOTSTRAP_NEXT_STEPS.md` in the new repo.
 7. Create a fresh first commit in the new repo.
 
 Bootstrap now rewrites the landing docs into project-facing drafts and generates a

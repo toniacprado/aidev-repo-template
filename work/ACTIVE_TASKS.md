@@ -1,13 +1,14 @@
 # Active Tasks
-*Version:* v2.3  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v2.5  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This file is the canonical current task list for the repo.
 
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
+| TEMPLATE-014 | Clean up doc hygiene after the context-engineering rollout | done | codex | Keep the newcomer smoke checks covering the amended docs and do a fresh template-user trial to confirm no stale onboarding references remain | 2026-03-24 |
 | TEMPLATE-013 | Harden the template around context engineering and just-in-time context loading | done | codex | Run a fresh `Use this template` trial and confirm a new user can follow the context-pack workflow without being told to read the whole repo | 2026-03-24 |
 | TEMPLATE-012 | Fix ship-blocking bootstrap handoff gaps before template trial | done | codex | Wait for the repaired branch CI to pass, then run a fresh GitHub `Use this template` trial and verify the generated session starter rewrites the landing docs cleanly | 2026-03-23 |
 | TEMPLATE-011 | Add guided Codex bootstrap takeover with strong recommendations and skip path | done | codex | Run one fresh GitHub `Use this template` flow and confirm a new user can hand the repo to Codex with the generated session starter alone | 2026-03-23 |
