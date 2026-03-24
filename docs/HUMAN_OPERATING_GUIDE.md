@@ -1,7 +1,7 @@
 # Human Operating Guide
-*Version:* v0.6  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.7  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This document explains how a human teammate should use this template day to day.
 
@@ -19,6 +19,7 @@ The template helps you:
 
 ## The 10-minute orientation
 - If you are new to Codex, start with `docs/CODEX_FIRST_HOUR.md`.
+- Then read `docs/CONTEXT_ENGINEERING.md` so you know which context pack to use.
 - Validate onboarding quality with `docs/NEWCOMER_USABILITY_CHECKLIST.md`.
 - `docs/` explains why the project exists, what is in scope, and how the team works.
 - `work/` stores the active task list, durable learnings, and detailed task files.
@@ -31,13 +32,15 @@ The template helps you:
 
 ## The default work loop
 1. Clarify the change in `docs/` first if intent or scope is fuzzy.
-2. Ask Codex to read the relevant repo files before changing anything.
+2. Ask Codex to read the smallest relevant context pack from `docs/CONTEXT_ENGINEERING.md`
+   before changing anything.
 3. Make sure there is a current task artifact in `work/` for multi-step work.
 4. Implement the smallest correct slice.
 5. Review the diff for contract drift, missing tests, prompt or eval updates, and task
    state updates.
 6. Run verification and record any residual risk.
-7. Before ending the session, make sure `work/` shows what is next.
+7. Before ending the session, compact the durable state into `work/` if the session became
+   long, then make sure `work/` shows what is next.
 
 ## How to prompt Codex well
 Good requests usually include:
@@ -52,8 +55,9 @@ Example:
 
 ```text
 Read docs/PROJECT_CHARTER.md, docs/CODEX_PROMPTING.md, docs/TASK_MANAGEMENT.md,
-and work/ACTIVE_TASKS.md. Implement the next slice, keep the change minimal, update
-the relevant task file with status and next action, and run the default verification.
+docs/CONTEXT_ENGINEERING.md, and work/ACTIVE_TASKS.md. Implement the next slice, keep the
+change minimal, update the relevant task file with status and next action, and run the
+default verification.
 ```
 
 ## When to create or update specific artifacts

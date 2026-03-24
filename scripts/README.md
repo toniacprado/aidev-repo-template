@@ -1,14 +1,15 @@
 # Scripts Directory
-*Version:* v1.0  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.1  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 Store repo utilities and bootstrap helpers here.
 
 Current scripts:
 - `bootstrap_new_project.py` resets template identity, rewrites the main landing docs
   into project-facing drafts, resets the decisions log, and generates a guided
-  post-bootstrap Codex handoff using a cross-platform Python entrypoint.
+  post-bootstrap Codex handoff plus context-engineering guidance using a cross-platform
+  Python entrypoint.
 - `bootstrap_new_project.ps1` does the same for Windows/PowerShell users.
 - `run_prompt_evals.py` runs deterministic prompt/eval link and golden-fixture checks.
 - `newcomer_smoke_test.py` runs newcomer-readiness structural and eval smoke checks.

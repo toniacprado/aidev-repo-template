@@ -1,5 +1,5 @@
 # Durable Learnings
-*Version:* v1.4  
+*Version:* v1.5  
 *Date:* 2026-03-24  
 *Last reviewed:* 2026-03-24
 
@@ -159,3 +159,13 @@ a single task file.
     focus, and depend too heavily on long chat transcripts even when the repo has strong docs.
   Action or follow-up: keep `docs/CONTEXT_ENGINEERING.md`, bootstrap handoff prompts, and
     smoke checks aligned around task-specific context packs and repo-visible compaction.
+
+- Date: 2026-03-24
+  Area: doc hygiene
+  Learning: a repo can be directionally correct and still violate its own standards if
+    version stamps and second-order docs drift after a larger instruction-layer change.
+  Why it matters: newcomers notice contradictions quickly, and stale review stamps weaken
+    trust in the claim that the repo itself is the durable source of truth.
+  Action or follow-up: when instruction-layer changes land, do a short follow-up audit of
+    README, onboarding docs, maintenance docs, and smoke-check coverage before calling the
+    rollout complete.

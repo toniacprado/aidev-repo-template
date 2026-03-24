@@ -215,6 +215,27 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
         )
     )
     checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "REPO_BOOTSTRAP_CHECKLIST.md",
+            "docs/CONTEXT_ENGINEERING.md",
+            "bootstrap-checklist-links-context-guide",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "HUMAN_OPERATING_GUIDE.md",
+            "docs/CONTEXT_ENGINEERING.md",
+            "human-guide-links-context-guide",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "HUMAN_OPERATING_GUIDE.md",
+            "compact the durable state into `work/`",
+            "human-guide-compaction-guidance",
+        )
+    )
+    checks.append(
         _check_path_exists(
             repo_root / "scripts" / "bootstrap_new_project.py",
             "cross-platform-bootstrap-script",

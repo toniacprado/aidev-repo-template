@@ -1,7 +1,7 @@
 # Repo Bootstrap Checklist
-*Version:* v1.1  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.2  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 Use this checklist immediately after copying this starter into a real repository.
 
@@ -13,6 +13,8 @@ Use this checklist immediately after copying this starter into a real repository
 - Optional Windows/PowerShell path: `scripts/bootstrap_new_project.ps1 -ProjectName "Your Project"`.
 - Open `docs/CODEX_SESSION_STARTER.md` immediately after bootstrap and paste the
   recommended prompt into Codex unless you have a strong reason to skip bootstrap.
+- Open `docs/CONTEXT_ENGINEERING.md` immediately after bootstrap so the first Codex session
+  follows the smallest relevant context pack instead of a broad repo preload.
 - Open `docs/BOOTSTRAP_NEXT_STEPS.md` immediately after bootstrap. Treat it as the
   primary handoff file until the product docs are real.
 - Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` to help Codex interview the user and draft
@@ -26,7 +28,8 @@ Use this checklist immediately after copying this starter into a real repository
 - Confirm `docs/DECISIONS.md` contains project-specific decisions rather than template
   history.
 - Replace any sample package or folder names under `src/`.
-- Confirm whether `work/` will be the canonical task tracker, then keep it current.
+- Confirm whether `work/` will be the canonical task tracker, then keep it current and use
+  it to compact long-session state instead of relying on chat history.
 - Review `.codex/config.toml.example` and decide what shared Codex defaults should be committed.
 
 ## Required before AI features matter
