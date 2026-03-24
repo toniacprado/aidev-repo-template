@@ -1,7 +1,7 @@
 # Task Management
-*Version:* v0.4  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.5  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This file defines how work should stay visible in the repo instead of disappearing into
 chat history.
@@ -39,6 +39,30 @@ chat history.
 4. Do the implementation work.
 5. Update progress, verification, and next action before handing off.
 
+## Compaction checkpoints
+If a session becomes long or the context feels noisy, compact the durable state back into
+`work/` instead of relying on chat history.
+
+Trigger points:
+- before handing off multi-step work
+- before switching to a new Codex thread or model
+- after a meaningful plan change or architecture decision
+- when too many files, logs, or tool results have accumulated in chat
+
+Minimum compaction fields:
+- current goal
+- major decisions made
+- files touched or the exact files to read next
+- verification run and results
+- blockers or open questions
+- next action
+
+Escalate durable information:
+- move enduring decisions to `docs/DECISIONS.md`
+- move reusable discoveries to `work/LEARNINGS.md`
+
 ## Handoff rule
 A task is not fully handed off until another contributor can open `work/` and see what
-is done, what is blocked, what was learned, and what should happen next.
+is done, what is blocked, what was learned, and what should happen next. The next
+contributor should be able to restart from the compacted repo state without reading the
+full prior chat transcript.

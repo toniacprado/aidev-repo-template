@@ -1,7 +1,7 @@
 # Codex First Hour
-*Version:* v0.6  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v0.7  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This guide is for first-time Codex users who want a clean, high-signal start.
 
@@ -16,11 +16,12 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 - Do not grant broader permissions unless the task truly needs them.
 
 ## Step 2: Load repo context (10 minutes)
-- Ask Codex to read `AGENTS.md` and `docs/START_HERE.md` first.
+- Ask Codex to read `AGENTS.md` and `docs/CONTEXT_ENGINEERING.md` first.
 - If this repo was freshly bootstrapped from the template and `docs/CODEX_SESSION_STARTER.md`
   exists, paste its recommended prompt into Codex instead of starting from a blank one-shot
   request.
-- Then point it at the specific files for your task.
+- Then point it at only the smallest relevant files for your task.
+- Do not ask it to read the whole repo unless you are intentionally doing a full audit.
 - Keep prompts in this shape: goal, context, constraints, done-when.
 
 ## Step 3: Plan before editing (10 minutes)
@@ -44,6 +45,7 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 ## Step 6: Leave handoff state (5 minutes)
 - Update `work/ACTIVE_TASKS.md` and the relevant `work/items/` file.
 - Record verification results honestly.
+- If the session became long, compact the durable state back into `work/` before you stop.
 - Leave a clear next action so another person can continue without chat history.
 - Create Git checkpoints before and after substantial changes to keep rollback simple.
 
@@ -64,6 +66,7 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 
 ## Keep this open while working
 - `AGENTS.md`
+- `docs/CONTEXT_ENGINEERING.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`
@@ -71,7 +74,7 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 
 ## Next in fast path
 After this file, continue in order:
-1. `docs/PROJECT_MANIFESTO.md`
-2. `docs/PROJECT_CHARTER.md`
-3. `AGENTS.md`
-4. `docs/AI_DEV_WORKFLOW.md`
+1. `docs/CONTEXT_ENGINEERING.md`
+2. `docs/PROJECT_MANIFESTO.md`
+3. `docs/PROJECT_CHARTER.md`
+4. `AGENTS.md`

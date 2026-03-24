@@ -1,9 +1,15 @@
 # Changelog
-*Version:* v1.7  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.8  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 ## Unreleased
+- Added `docs/CONTEXT_ENGINEERING.md` and switched the default instruction flow from a
+  broad ordered read list to task-specific context packs plus just-in-time retrieval.
+- Updated onboarding, bootstrap handoff guidance, and shared prompt assets to teach
+  context packs and repo-visible compaction for long sessions.
+- Expanded the task-management contract so long-session state is compacted into `work/`,
+  `docs/DECISIONS.md`, and `work/LEARNINGS.md` instead of staying in chat history.
 - Fixed `scripts/bootstrap_new_project.ps1` so markdown-heavy generated docs are built from
   literal templates plus explicit token expansion instead of PowerShell-expandable
   here-strings that break on `pwsh` runners.

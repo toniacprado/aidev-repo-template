@@ -1,7 +1,7 @@
 # AGENTS.md - Rules for AI Coding Agents (Codex-first)
-*Version:* v1.2  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v1.3  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This repository is designed for Codex-first development. Repository-level instructions
 live here so project norms survive tool changes and can be read directly from disk.
@@ -31,28 +31,26 @@ When sources conflict, prefer:
 4. `docs/GUARDRAILS.md`
 5. `docs/MODEL_POLICY.md`
 6. `docs/TASK_MANAGEMENT.md`
-7. `docs/REPO_STRUCTURE.md`
-8. task-specific contracts in `work/`, `.codex/`, `system/`, `prompts/`, and `evals/`
+7. `docs/CONTEXT_ENGINEERING.md`
+8. `docs/REPO_STRUCTURE.md`
+9. task-specific contracts in `work/`, `.codex/`, `system/`, `prompts/`, and `evals/`
 
 ---
 
-## Read These First (in order)
+## Default Context Load
 1. `docs/PROJECT_MANIFESTO.md`
 2. `docs/PROJECT_CHARTER.md`
-3. `docs/AI_DEV_WORKFLOW.md`
-4. `docs/CODEX_FIRST_HOUR.md` (especially for newcomers)
-5. `docs/CODEX_PROMPTING.md`
-6. `docs/TASK_MANAGEMENT.md`
-7. `docs/GUARDRAILS.md`
-8. `docs/MODEL_POLICY.md`
-9. `docs/CODEX_ENVIRONMENT.md`
-10. `docs/TEMPLATE_MAINTENANCE.md`
-11. `docs/TECH_STACK_SELECTION.md`
-12. `docs/ENGINEERING_STANDARDS.md`
-13. `docs/REPO_STRUCTURE.md`
-14. relevant files in `work/`, `.codex/`, `.agents/skills/`, `codex/rules/`,
-    `system/schemas/`, `system/templates/`, and `system/prompts/`
-15. `prompts/README.md` and `evals/README.md` when working on model behavior
+3. `docs/CONTEXT_ENGINEERING.md`
+4. `work/ACTIVE_TASKS.md`
+5. the relevant file in `work/items/`
+6. only the smallest additional context pack from `docs/CONTEXT_ENGINEERING.md`
+
+Additional defaults:
+- If you are new to the repo, also read `docs/CODEX_FIRST_HOUR.md`.
+- Do not preload the full repo by default; retrieve additional docs, prompts, policies,
+  and source files only when the current task requires them.
+- When working on model behavior, add `prompts/README.md`, `evals/README.md`, and the
+  touched prompt/eval assets.
 
 If any canonical file is missing or empty, create a meaningful placeholder before
 implementing behavior.
@@ -90,6 +88,8 @@ implementing behavior.
   and done-when.
 - Plan first for complex or ambiguous tasks before changing code.
 - Prefer small slices that are realistically finishable and verifiable in one focused session.
+- Prefer the smallest relevant context pack over broad preloading. Retrieve extra files
+  just in time as the task sharpens.
 - When work depends on external changing context, prefer MCP or official docs over pasted
   summaries.
 - For OpenAI or Codex usage questions, prefer the OpenAI developer docs MCP server when
@@ -98,6 +98,8 @@ implementing behavior.
   network off by default unless the task clearly needs more.
 - Treat the Python tooling in this repo as template-maintenance-only, not as a product-stack assumption.
 - Use nested `AGENTS.override.md` files for genuinely different rules in subtrees.
+- If a session becomes long or changes direction, compact the durable state back into
+  `work/`, `docs/DECISIONS.md`, and `work/LEARNINGS.md` before continuing.
 
 ## Fresh repo bootstrap mode
 - If this repo was freshly created from the template and `work/items/BOOTSTRAP-001-initialize-project.md`

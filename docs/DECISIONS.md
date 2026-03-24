@@ -1,7 +1,7 @@
 # Decisions Log
-*Version:* v0.6  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v0.7  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 Use this file to record meaningful product, architecture, or workflow decisions.
 
@@ -73,3 +73,17 @@ Use this file to record meaningful product, architecture, or workflow decisions.
   Codex handoff explicitly, and tests must verify the session-starter path.
 - Revisit when: real newcomer trials show the generated prompts are still too indirect
   or too verbose.
+
+### 2026-03-24 - Default to task-specific context packs and repo-visible compaction
+- Decision: the template should default to task-specific context packs, just-in-time
+  retrieval, and compaction of long-session state back into repo files instead of broad
+  preloading plus chat-dependent memory.
+- Why: context is a finite attention budget; loading too much at once creates noise,
+  weakens focus, and pushes durable state back into chat history.
+- Alternatives considered: keeping the long ordered read list as the default, or relying
+  on ad hoc chat summaries without repo-visible compaction rules.
+- Consequences: onboarding, bootstrap handoff docs, prompt assets, and smoke checks need
+  to teach `docs/CONTEXT_ENGINEERING.md`, and `work/` becomes the reset point for long
+  sessions.
+- Revisit when: real template-user trials show the context packs are too heavy, too light,
+  or unnecessary because tool behavior changes materially.

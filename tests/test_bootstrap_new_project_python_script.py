@@ -55,6 +55,9 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex." in (
         readme_text
     )
+    assert "Review `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md`." in (
+        readme_text
+    )
     assert "Project-facing draft docs were generated for the manifesto, charter, stack" in (
         readme_text
     )
@@ -71,12 +74,15 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended bootstrap prompt" in (
         start_here
     )
+    assert "Keep `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` open" in (
+        start_here
+    )
 
     session_starter = (tmp_path / "docs" / "CODEX_SESSION_STARTER.md").read_text(encoding="utf-8")
     assert "Take over bootstrap and turn this fresh repo into a real first-pass" in (
         session_starter
     )
-    assert "Context: Read README.md, AGENTS.md" in session_starter
+    assert "Context: Read README.md, AGENTS.md, docs/CONTEXT_ENGINEERING.md" in session_starter
     assert "Done when: README.md, docs/START_HERE.md" in session_starter
     assert "Skipping bootstrap is allowed but not recommended." in session_starter
 
@@ -94,6 +100,9 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "recommends a spec-first bootstrap before feature work" in bootstrap_guide
     assert "Set the project slug to `acme-platform` in `pyproject.toml`." in bootstrap_guide
     assert "1. Rewrite `README.md` and `docs/START_HERE.md`." in bootstrap_guide
+    assert "Keep `docs/CONTEXT_ENGINEERING.md` and this file open while Codex works." in (
+        bootstrap_guide
+    )
     assert "## Skip Path" in bootstrap_guide
 
     manifesto = (tmp_path / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
@@ -122,7 +131,7 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     bootstrap_item = tmp_path / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
     assert bootstrap_item.exists()
     bootstrap_item_text = bootstrap_item.read_text(encoding="utf-8")
-    assert "Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the" in (
+    assert "`docs/CODEX_SESSION_STARTER.md`, `docs/CONTEXT_ENGINEERING.md`, and" in (
         bootstrap_item_text
     )
     assert "`docs/START_HERE.md` reflects the real project workflow" in bootstrap_item_text

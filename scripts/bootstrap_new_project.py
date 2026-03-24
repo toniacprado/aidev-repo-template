@@ -39,7 +39,7 @@ def _write_readme(repo_root: Path, project_name: str, project_slug: str, today: 
 
         ## Start Here
         1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex.
-        2. Review `docs/BOOTSTRAP_NEXT_STEPS.md`.
+        2. Review `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md`.
         3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` to help Codex draft the core artifacts.
         4. Review the generated drafts before moving into feature work.
         5. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`
@@ -95,7 +95,8 @@ def _write_start_here(repo_root: Path, project_name: str, today: str) -> None:
         ## Recommended First Session
         1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended bootstrap prompt
            into Codex.
-        2. Keep `docs/BOOTSTRAP_NEXT_STEPS.md` open while Codex works.
+        2. Keep `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` open while
+           Codex works.
         3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for
            drafting the manifesto, charter, stack decision, and work items.
         4. Review the drafted files, correct assumptions, and only then move into feature
@@ -107,6 +108,7 @@ def _write_start_here(repo_root: Path, project_name: str, today: str) -> None:
         These files stay useful after the project docs are rewritten:
         - `AGENTS.md`
         - `docs/AI_DEV_WORKFLOW.md`
+        - `docs/CONTEXT_ENGINEERING.md`
         - `docs/CODEX_PROMPTING.md`
         - `docs/TASK_MANAGEMENT.md`
         - `docs/GUARDRAILS.md`
@@ -137,7 +139,8 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
         ```text
         Goal: Take over bootstrap and turn this fresh repo into a real first-pass
         project definition.
-        Context: Read README.md, AGENTS.md, docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
+        Context: Read README.md, AGENTS.md, docs/CONTEXT_ENGINEERING.md,
+        docs/START_HERE.md, docs/CODEX_SESSION_STARTER.md,
         docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
         docs/PROJECT_MANIFESTO.md, docs/PROJECT_CHARTER.md, docs/TECH_STACK_SELECTION.md,
         docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
@@ -145,7 +148,8 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
         Constraints: Stay in bootstrap/spec mode first. Strongly recommend finishing the
         landing docs, manifesto, charter, tech stack decision, decision log, and first work
         item before feature implementation. Do not ask me to fill blank forms; interview me
-        with a short focused set of questions, then draft the files directly. If I explicitly
+        with a short focused set of questions, then draft the files directly. Load only the
+        bootstrap context pack first, then retrieve extra files just in time. If I explicitly
         choose to skip bootstrap, warn me once about the risk, then proceed and record
         assumptions and follow-up bootstrap debt in work/.
         Done when: README.md, docs/START_HERE.md, the core project artifacts, and the first
@@ -162,9 +166,9 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
 
         ```text
         Goal: Stop implementation and switch back to bootstrap mode.
-        Context: Read AGENTS.md, docs/CODEX_SESSION_STARTER.md, docs/BOOTSTRAP_NEXT_STEPS.md,
-        docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md, work/ACTIVE_TASKS.md, and
-        work/items/BOOTSTRAP-001-initialize-project.md.
+        Context: Read AGENTS.md, docs/CONTEXT_ENGINEERING.md, docs/CODEX_SESSION_STARTER.md,
+        docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
+        work/ACTIVE_TASKS.md, and work/items/BOOTSTRAP-001-initialize-project.md.
         Constraints: Do not implement features yet. Finish the core project artifacts first
         unless I explicitly tell you to skip bootstrap.
         Done when: bootstrap artifacts and work tracking are drafted well enough to define the
@@ -176,8 +180,8 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
 
         ```text
         Goal: Start the first feature even though bootstrap artifacts are incomplete.
-        Context: Read AGENTS.md, docs/BOOTSTRAP_NEXT_STEPS.md, work/ACTIVE_TASKS.md, and
-        work/items/BOOTSTRAP-001-initialize-project.md.
+        Context: Read AGENTS.md, docs/CONTEXT_ENGINEERING.md, docs/BOOTSTRAP_NEXT_STEPS.md,
+        work/ACTIVE_TASKS.md, and work/items/BOOTSTRAP-001-initialize-project.md.
         Constraints: Warn me once that missing manifesto and charter context increases
         assumption risk. Then proceed only if I confirm. Record the missing artifacts, key
         assumptions, and a follow-up task in work/. Keep the feature slice small and
@@ -352,7 +356,7 @@ def _write_bootstrap_next_steps(
         ## Recommended Path
         1. Open `docs/CODEX_SESSION_STARTER.md` and paste the recommended prompt into Codex.
            Use this even if the product idea feels clear already.
-        2. Keep this file open while Codex works.
+        2. Keep `docs/CONTEXT_ENGINEERING.md` and this file open while Codex works.
         3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for the
            manifesto, charter, stack decision, decision log, and work tracking.
         4. Review the drafted files and replace incorrect assumptions.
@@ -660,8 +664,9 @@ def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> Non
         ## Summary
         - Replace the remaining placeholder content with the real project's landing docs,
           intent, scope, stack, decision log, and first task queue.
-        - Use `docs/CODEX_SESSION_STARTER.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` as the
-          primary guides until the repo has a real product definition.
+        - Use `docs/CODEX_SESSION_STARTER.md`, `docs/CONTEXT_ENGINEERING.md`, and
+          `docs/BOOTSTRAP_NEXT_STEPS.md` as the primary guides until the repo has a real
+          product definition.
 
         ## Acceptance Criteria
         - `README.md` describes the real project rather than the template.

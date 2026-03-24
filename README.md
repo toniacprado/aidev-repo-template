@@ -1,5 +1,5 @@
 # AI Dev Repo Template
-*Version:* v1.6  
+*Version:* v1.8  
 *Date:* 2026-03-23  
 *Last reviewed:* 2026-03-23
 
@@ -18,6 +18,7 @@ visible task state, model and guardrail policies, and lightweight verification.
 - fast onboarding
 - spec-first development
 - repo-owned AI instructions instead of chat-only memory
+- task-specific context packs and just-in-time retrieval
 - prompt and eval versioning
 - persistent task tracking with explicit next actions
 - shared Codex environment and safety defaults
@@ -63,12 +64,15 @@ the repo now tells both the human and Codex how to do that.
 ## Start here
 Frictionless first pass (no backtracking):
 1. `docs/CODEX_FIRST_HOUR.md`
-2. `docs/PROJECT_MANIFESTO.md`
-3. `docs/PROJECT_CHARTER.md`
-4. `AGENTS.md`
-5. `docs/AI_DEV_WORKFLOW.md`
+2. `docs/CONTEXT_ENGINEERING.md`
+3. `docs/PROJECT_MANIFESTO.md`
+4. `docs/PROJECT_CHARTER.md`
+5. `AGENTS.md`
 
 Need the full map after that? Use `docs/START_HERE.md`.
+
+Do not preload the whole repo by default. Use `docs/CONTEXT_ENGINEERING.md` to choose
+the smallest context pack for the task you are doing.
 
 ## Command conventions
 - Use `python` commands from an activated virtual environment.
@@ -97,9 +101,11 @@ Codex desktop is the primary AI coding environment for this repo.
 
 Default rules:
 - keep durable instructions in the repo, not only in chat
-- ask Codex to read specific files before making changes
+- ask Codex to read the smallest relevant context pack before making changes
+- prefer just-in-time retrieval over opening many docs up front
 - update docs, prompts, evals, task files, and tests in the same diff when behavior changes
 - prefer the smallest correct slice over broad scaffolding
+- compact long-session state back into `work/` and `docs/DECISIONS.md` instead of relying on chat memory
 - leave the next step in `work/` before closing multi-step tasks
 - keep guardrails and model policy explicit when AI behavior changes
 - use official vendor docs when provider-specific behavior matters
@@ -108,6 +114,7 @@ Secondary instruction layers:
 - `.github/copilot-instructions.md`
 - `CLAUDE.md`
 - `docs/AI_DEV_WORKFLOW.md`
+- `docs/CONTEXT_ENGINEERING.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`

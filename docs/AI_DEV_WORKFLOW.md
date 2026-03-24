@@ -1,7 +1,7 @@
 # AI Dev Workflow
-*Version:* v0.8  
-*Date:* 2026-03-23  
-*Last reviewed:* 2026-03-23
+*Version:* v0.9  
+*Date:* 2026-03-24  
+*Last reviewed:* 2026-03-24
 
 This workflow keeps AI-assisted development aligned with product intent and repo
 contracts.
@@ -19,8 +19,16 @@ contracts.
   chooses to skip it.
 - If the user skips, warn once and record assumptions plus bootstrap debt in `work/`.
 
+## Context-loading rule
+- Start with the smallest relevant context pack from `docs/CONTEXT_ENGINEERING.md`.
+- Prefer just-in-time retrieval over preloading many docs and files up front.
+- Pull additional product, policy, prompt, or code files only when the current step needs
+  them.
+- Treat copied chat context as less trustworthy than repo files and official sources.
+
 ## Default implementation loop
-1. Read the relevant docs, contracts, prompts, eval assets, and work artifacts first.
+1. Load the smallest relevant context pack first, then retrieve extra docs or files only
+   as needed.
 2. For complex work, ask for a plan before editing code.
 3. Tighten the spec if the task is ambiguous.
 4. Create or update the relevant task artifact in `work/` if the task spans multiple
@@ -38,6 +46,16 @@ contracts.
 - Chat updates are helpful, but they do not replace repo-visible task state.
 - If a task completes, mark it done and leave the next recommended slice when possible.
 - If a task is blocked, record exactly what unblock is needed and who should act.
+
+## Long-session compaction
+- If the thread gets long, the task changes direction, or you are about to hand off, write
+  a compact state summary back into the repo before continuing.
+- Put task-local state in the active work item: current goal, decisions, files touched,
+  verification state, blockers, and next action.
+- Put enduring choices in `docs/DECISIONS.md`.
+- Put reusable discoveries in `work/LEARNINGS.md`.
+- Restart from the compacted repo state instead of assuming long chat history will stay in
+  working memory.
 
 ## Prompting patterns for humans
 When asking Codex to work, include:
@@ -69,6 +87,7 @@ When asking Codex to work, include:
 
 ## Recommended references
 - `docs/CODEX_FIRST_HOUR.md` (new-user onboarding)
+- `docs/CONTEXT_ENGINEERING.md`
 - `docs/CODEX_SESSION_STARTER.md` when it exists in a freshly bootstrapped repo
 - `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` when bootstrap artifacts still need drafting
 - `docs/NEWCOMER_USABILITY_CHECKLIST.md`
