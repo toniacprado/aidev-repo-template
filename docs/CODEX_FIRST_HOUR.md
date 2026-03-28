@@ -1,7 +1,7 @@
 # Codex First Hour
-*Version:* v0.7  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v0.8  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This guide is for first-time Codex users who want a clean, high-signal start.
 
@@ -48,6 +48,11 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 - If the session became long, compact the durable state back into `work/` before you stop.
 - Leave a clear next action so another person can continue without chat history.
 - Create Git checkpoints before and after substantial changes to keep rollback simple.
+- If the repo is private, solo, and unprotected, direct commits to `main` can be fine.
+- If the repo is protected, public, or shared, publish through one short-lived branch per
+  mergeable slice instead of pushing directly to `main`.
+- If you find related fixes before merge, keep them on the same branch rather than opening
+  a new branch for every tiny follow-up.
 
 ## Essential slash commands
 - `/init`: scaffold an `AGENTS.md` file in the current directory.
@@ -67,6 +72,7 @@ This guide is for first-time Codex users who want a clean, high-signal start.
 ## Keep this open while working
 - `AGENTS.md`
 - `docs/CONTEXT_ENGINEERING.md`
+- `docs/GIT_WORKFLOW.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`

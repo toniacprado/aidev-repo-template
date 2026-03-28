@@ -1,7 +1,7 @@
 # Durable Learnings
-*Version:* v1.5  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.6  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
@@ -169,3 +169,12 @@ a single task file.
   Action or follow-up: when instruction-layer changes land, do a short follow-up audit of
     README, onboarding docs, maintenance docs, and smoke-check coverage before calling the
     rollout complete.
+
+- Date: 2026-03-28
+  Area: Git workflow
+  Learning: branch-per-thought is too heavy for many repos, but direct-to-main is wrong when
+    the repo is protected, public, or shared.
+  Why it matters: a good template should lower friction for solo builders without teaching bad
+    habits for governed repos.
+  Action or follow-up: keep the policy as "checkpoint always, branch when publishing across a
+    review/protection boundary" and teach related pre-merge fixes to stay on the same branch.

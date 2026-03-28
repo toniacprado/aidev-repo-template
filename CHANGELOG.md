@@ -1,9 +1,14 @@
 # Changelog
-*Version:* v1.9  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v2.0  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 ## Unreleased
+- Added `docs/GIT_WORKFLOW.md` with a risk-based branching and publishing policy that
+  distinguishes local checkpoints from protected/public/shared publish boundaries.
+- Updated onboarding, workflow, and bootstrap docs so the template now teaches
+  "checkpoint always, branch when publishing across a review/protection boundary."
+- Expanded newcomer smoke checks and bootstrap tests to cover the Git workflow guidance.
 - Cleaned up doc hygiene after the context-engineering rollout by fixing stale metadata
   and aligning the remaining onboarding and maintenance docs with the context-pack
   workflow.

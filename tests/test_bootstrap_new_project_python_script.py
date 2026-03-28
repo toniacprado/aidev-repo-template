@@ -77,6 +77,7 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "Keep `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` open" in (
         start_here
     )
+    assert "- `docs/GIT_WORKFLOW.md`" in start_here
 
     session_starter = (tmp_path / "docs" / "CODEX_SESSION_STARTER.md").read_text(encoding="utf-8")
     assert "Take over bootstrap and turn this fresh repo into a real first-pass" in (
@@ -103,6 +104,7 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "Keep `docs/CONTEXT_ENGINEERING.md` and this file open while Codex works." in (
         bootstrap_guide
     )
+    assert "See `docs/GIT_WORKFLOW.md`." in bootstrap_guide
     assert "## Skip Path" in bootstrap_guide
 
     manifesto = (tmp_path / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
@@ -134,6 +136,7 @@ def test_python_bootstrap_script_initializes_new_project_state(tmp_path: Path) -
     assert "`docs/CODEX_SESSION_STARTER.md`, `docs/CONTEXT_ENGINEERING.md`, and" in (
         bootstrap_item_text
     )
+    assert "Use `docs/GIT_WORKFLOW.md` to choose the publish path" in bootstrap_item_text
     assert "`docs/START_HERE.md` reflects the real project workflow" in bootstrap_item_text
     assert f"updated: {today}" in bootstrap_item_text
     assert (

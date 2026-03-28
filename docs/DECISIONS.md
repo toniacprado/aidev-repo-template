@@ -1,7 +1,7 @@
 # Decisions Log
-*Version:* v0.7  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v0.8  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 Use this file to record meaningful product, architecture, or workflow decisions.
 
@@ -87,3 +87,15 @@ Use this file to record meaningful product, architecture, or workflow decisions.
   sessions.
 - Revisit when: real template-user trials show the context packs are too heavy, too light,
   or unnecessary because tool behavior changes materially.
+
+### 2026-03-28 - Git workflow should be risk-based, not branch-heavy by default
+- Decision: the template should separate local checkpoints from publish boundaries and teach
+  short-lived PR branches only when repo governance makes them useful.
+- Why: blanket branch-per-task advice creates friction in simple solo repos, but direct-to-main
+  is inappropriate in protected, public, or shared repos.
+- Alternatives considered: always branch for every task, or treat direct-to-main as the
+  default everywhere.
+- Consequences: onboarding docs need to distinguish private/solo/unprotected repos from
+  protected/public/shared repos, and fresh bootstrapped projects need a visible Git workflow
+  policy instead of ad hoc chat advice.
+- Revisit when: Codex tooling or common repo protection defaults change materially.

@@ -1,7 +1,7 @@
 # Repo Bootstrap Checklist
-*Version:* v1.2  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.3  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 Use this checklist immediately after copying this starter into a real repository.
 
@@ -27,6 +27,9 @@ Use this checklist immediately after copying this starter into a real repository
 - Update `docs/TECH_STACK_SELECTION.md` with the real project decision.
 - Confirm `docs/DECISIONS.md` contains project-specific decisions rather than template
   history.
+- Decide whether the new repo will use direct commits to `main` or short-lived PR branches.
+  If it is protected, public, or shared, prefer short-lived PR branches. See
+  `docs/GIT_WORKFLOW.md`.
 - Replace any sample package or folder names under `src/`.
 - Confirm whether `work/` will be the canonical task tracker, then keep it current and use
   it to compact long-session state instead of relying on chat history.
