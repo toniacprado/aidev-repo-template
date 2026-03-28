@@ -1,7 +1,7 @@
 # AI Dev Workflow
-*Version:* v0.9  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.0  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This workflow keeps AI-assisted development aligned with product intent and repo
 contracts.
@@ -25,6 +25,17 @@ contracts.
 - Pull additional product, policy, prompt, or code files only when the current step needs
   them.
 - Treat copied chat context as less trustworthy than repo files and official sources.
+
+## Git publishing rule
+- Separate local checkpoints from publish boundaries.
+- Use local commits freely while you work.
+- If the repo is private, solo, and unprotected, direct commits to `main` can be a valid
+  low-friction workflow.
+- If the repo is protected, public, or shared, publish through one short-lived branch per
+  coherent, mergeable slice.
+- If related fixes are discovered before merge, keep them on the same branch unless the
+  issue is clearly separate or was discovered after merge.
+- Auto-delete merged branches and prune stale refs periodically to keep the repo tidy.
 
 ## Default implementation loop
 1. Load the smallest relevant context pack first, then retrieve extra docs or files only
@@ -88,6 +99,7 @@ When asking Codex to work, include:
 ## Recommended references
 - `docs/CODEX_FIRST_HOUR.md` (new-user onboarding)
 - `docs/CONTEXT_ENGINEERING.md`
+- `docs/GIT_WORKFLOW.md`
 - `docs/CODEX_SESSION_STARTER.md` when it exists in a freshly bootstrapped repo
 - `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` when bootstrap artifacts still need drafting
 - `docs/NEWCOMER_USABILITY_CHECKLIST.md`

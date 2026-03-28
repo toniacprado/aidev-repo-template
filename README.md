@@ -1,7 +1,7 @@
 # AI Dev Repo Template
-*Version:* v1.9  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v2.0  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This repository is a starter template for teams who want a reusable AI development
 baseline with Codex-first workflow standards, without making the project dependent on
@@ -19,6 +19,7 @@ visible task state, model and guardrail policies, and lightweight verification.
 - spec-first development
 - repo-owned AI instructions instead of chat-only memory
 - task-specific context packs and just-in-time retrieval
+- risk-based Git workflow with frequent checkpoints and lightweight publish boundaries
 - prompt and eval versioning
 - persistent task tracking with explicit next actions
 - shared Codex environment and safety defaults
@@ -74,6 +75,7 @@ Need the full map after that? Use `docs/START_HERE.md`.
 
 Do not preload the whole repo by default. Use `docs/CONTEXT_ENGINEERING.md` to choose
 the smallest context pack for the task you are doing.
+For Git branching and publishing policy, see `docs/GIT_WORKFLOW.md`.
 
 ## Command conventions
 - Use `python` commands from an activated virtual environment.
@@ -106,6 +108,8 @@ Default rules:
 - prefer just-in-time retrieval over opening many docs up front
 - update docs, prompts, evals, task files, and tests in the same diff when behavior changes
 - prefer the smallest correct slice over broad scaffolding
+- checkpoint freely while working; branch when publishing across a review, protection, or
+  collaboration boundary
 - compact long-session state back into `work/` and `docs/DECISIONS.md` instead of relying on chat memory
 - leave the next step in `work/` before closing multi-step tasks
 - keep guardrails and model policy explicit when AI behavior changes
@@ -116,6 +120,7 @@ Secondary instruction layers:
 - `CLAUDE.md`
 - `docs/AI_DEV_WORKFLOW.md`
 - `docs/CONTEXT_ENGINEERING.md`
+- `docs/GIT_WORKFLOW.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`

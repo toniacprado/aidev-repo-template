@@ -1,7 +1,7 @@
 # Newcomer Usability Checklist
-*Version:* v0.5  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v0.6  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 Use this checklist before calling the template "ready for first-time Codex users."
 
@@ -23,14 +23,18 @@ Use this checklist before calling the template "ready for first-time Codex users
 6. Ask Codex for a plan on one small task (`/plan`) using only the smallest relevant context
    pack rather than a broad repo preload.
 7. Implement one thin slice with verification.
-8. Ask for a review pass (`/review`).
-9. Confirm handoff state in `work/ACTIVE_TASKS.md`.
-10. If the session became long, confirm the durable state was compacted back into `work/`
+8. Use the guidance in `docs/GIT_WORKFLOW.md` to choose whether this repo should publish from
+   `main` directly or through a short-lived PR branch.
+9. Ask for a review pass (`/review`).
+10. Confirm handoff state in `work/ACTIVE_TASKS.md`.
+11. If the session became long, confirm the durable state was compacted back into `work/`
     rather than left only in chat.
 
 ## Pass criteria
 - New user can complete one end-to-end task without relying on hidden chat context.
 - New user can choose an appropriate context pack without being told to read the whole repo.
+- New user can choose a sensible Git publish path without defaulting to unnecessary branch
+  churn or unsafe direct-to-main behavior.
 - Prompt/eval assets and deterministic eval checks are understandable and runnable.
 - Task state and next action are visible in `work/`.
 

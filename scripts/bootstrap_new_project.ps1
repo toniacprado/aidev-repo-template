@@ -166,6 +166,7 @@ These files stay useful after the project docs are rewritten:
 - `AGENTS.md`
 - `docs/AI_DEV_WORKFLOW.md`
 - `docs/CONTEXT_ENGINEERING.md`
+- `docs/GIT_WORKFLOW.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/GUARDRAILS.md`
@@ -464,6 +465,9 @@ python scripts/newcomer_smoke_test.py
 
 ## Before The First Feature
 - Work through `docs/REPO_BOOTSTRAP_CHECKLIST.md`.
+- Choose a Git publish path. If the repo is protected, shared, or public, use
+  short-lived PR branches. If it is private, solo, and unprotected, direct commits
+  to `main` can be fine. See `docs/GIT_WORKFLOW.md`.
 - Add at least one real decision entry in `docs/DECISIONS.md`.
 - Make sure `work/ACTIVE_TASKS.md` points at the first product slice, not only
   bootstrap cleanup.
@@ -707,6 +711,8 @@ blocked_on: none
 
 ## Notes
 - Review `docs/REPO_BOOTSTRAP_CHECKLIST.md` before the first real feature.
+- Use `docs/GIT_WORKFLOW.md` to choose the publish path for the new repo instead of
+  assuming every change needs a new branch.
 - Keep placeholder wording only long enough to decide the real product definition.
 '@
 $bootstrapItem = Expand-Template -Template $bootstrapItemTemplate -Replacements $templateValues

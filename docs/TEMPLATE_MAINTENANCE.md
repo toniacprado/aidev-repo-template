@@ -1,7 +1,7 @@
 # Template Maintenance
-*Version:* v1.0  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.1  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This file explains what is required to maintain the template itself.
 
@@ -71,6 +71,10 @@ environment and then run commands after activation.
 
 ## Maintenance workflow reminder
 - Start with `docs/CONTEXT_ENGINEERING.md` instead of preloading every maintenance doc.
+- For this template repo itself, assume `main` is protected and publish through short-lived
+  PR branches instead of pushing directly to `main`.
+- If a related fix is found before that PR merges, keep it on the same branch unless the new
+  issue is clearly separate.
 - Update version/date/review stamps when materially editing Markdown guidance files.
 - When the instruction layer changes, update the most relevant smoke checks in the same diff.
 

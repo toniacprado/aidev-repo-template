@@ -1,7 +1,7 @@
 # Human Operating Guide
-*Version:* v0.7  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v0.8  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This document explains how a human teammate should use this template day to day.
 
@@ -20,6 +20,8 @@ The template helps you:
 ## The 10-minute orientation
 - If you are new to Codex, start with `docs/CODEX_FIRST_HOUR.md`.
 - Then read `docs/CONTEXT_ENGINEERING.md` so you know which context pack to use.
+- Read `docs/GIT_WORKFLOW.md` if you will publish changes through GitHub or collaborate
+  with others.
 - Validate onboarding quality with `docs/NEWCOMER_USABILITY_CHECKLIST.md`.
 - `docs/` explains why the project exists, what is in scope, and how the team works.
 - `work/` stores the active task list, durable learnings, and detailed task files.
@@ -41,6 +43,15 @@ The template helps you:
 6. Run verification and record any residual risk.
 7. Before ending the session, compact the durable state into `work/` if the session became
    long, then make sure `work/` shows what is next.
+
+## Git workflow default
+- Use local commits or checkpoints freely while you work.
+- If the repo is private, solo, and unprotected, direct commits to `main` can be the
+  simplest correct workflow.
+- If the repo is protected, public, or shared, publish through one short-lived branch per
+  mergeable slice instead of pushing directly to `main`.
+- If you discover related fixes before merge, keep them on the same branch unless the issue
+  is genuinely separate.
 
 ## How to prompt Codex well
 Good requests usually include:

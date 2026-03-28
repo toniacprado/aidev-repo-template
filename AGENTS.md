@@ -1,7 +1,7 @@
 # AGENTS.md - Rules for AI Coding Agents (Codex-first)
-*Version:* v1.3  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.4  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This repository is designed for Codex-first development. Repository-level instructions
 live here so project norms survive tool changes and can be read directly from disk.
@@ -32,8 +32,9 @@ When sources conflict, prefer:
 5. `docs/MODEL_POLICY.md`
 6. `docs/TASK_MANAGEMENT.md`
 7. `docs/CONTEXT_ENGINEERING.md`
-8. `docs/REPO_STRUCTURE.md`
-9. task-specific contracts in `work/`, `.codex/`, `system/`, `prompts/`, and `evals/`
+8. `docs/GIT_WORKFLOW.md`
+9. `docs/REPO_STRUCTURE.md`
+10. task-specific contracts in `work/`, `.codex/`, `system/`, `prompts/`, and `evals/`
 
 ---
 
@@ -41,9 +42,10 @@ When sources conflict, prefer:
 1. `docs/PROJECT_MANIFESTO.md`
 2. `docs/PROJECT_CHARTER.md`
 3. `docs/CONTEXT_ENGINEERING.md`
-4. `work/ACTIVE_TASKS.md`
-5. the relevant file in `work/items/`
-6. only the smallest additional context pack from `docs/CONTEXT_ENGINEERING.md`
+4. `docs/GIT_WORKFLOW.md`
+5. `work/ACTIVE_TASKS.md`
+6. the relevant file in `work/items/`
+7. only the smallest additional context pack from `docs/CONTEXT_ENGINEERING.md`
 
 Additional defaults:
 - If you are new to the repo, also read `docs/CODEX_FIRST_HOUR.md`.
@@ -130,6 +132,10 @@ implementing behavior.
 - Ask for approval before destructive actions or external sends.
 - For non-trivial tasks, leave a repo-visible next step in `work/` before considering
   the task handoff complete.
+- Use local checkpoints freely while working, but prefer one short-lived branch per
+  coherent, mergeable slice when publishing to a protected, public, or shared repo.
+- If related fixes are found before that branch is merged, keep them on the same branch
+  unless the issue is clearly separate or was discovered after merge.
 
 ---
 

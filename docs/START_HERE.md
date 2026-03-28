@@ -1,7 +1,7 @@
 # Start Here
-*Version:* v1.0  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.1  
+*Date:* 2026-03-28  
+*Last reviewed:* 2026-03-28
 
 This template is meant to help humans and Codex build from the same written context.
 
@@ -20,6 +20,7 @@ smallest relevant context pack for the task in front of you.
 ## Human workflow and prompting
 - `docs/HUMAN_OPERATING_GUIDE.md`
 - `docs/AI_DEV_WORKFLOW.md`
+- `docs/GIT_WORKFLOW.md`
 - `docs/CODEX_PROMPTING.md`
 - `docs/TASK_MANAGEMENT.md`
 - `docs/COMMAND_CONVENTIONS.md`
