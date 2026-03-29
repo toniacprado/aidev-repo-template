@@ -8,6 +8,7 @@ This file is the canonical current task list for the repo.
 ## Active
 | ID | Title | Status | Owner | Next action | Last updated |
 | --- | --- | --- | --- | --- | --- |
+| TEMPLATE-016 | Harden post-bootstrap tech stack decision and adoption guidance | done | codex | Validate the revised stack handoff in one fresh `Use this template` run and confirm a newcomer can replace the inherited Python defaults without extra chat guidance | 2026-03-29 |
 | TEMPLATE-015 | Add a risk-based Git workflow policy for Codex-first projects | done | codex | Validate the policy in one fresh `Use this template` run and confirm a newcomer can choose a publish path without unnecessary branch churn | 2026-03-28 |
 | TEMPLATE-014 | Clean up doc hygiene after the context-engineering rollout | done | codex | Keep the newcomer smoke checks covering the amended docs and do a fresh template-user trial to confirm no stale onboarding references remain | 2026-03-24 |
 | TEMPLATE-013 | Harden the template around context engineering and just-in-time context loading | done | codex | Run a fresh `Use this template` trial and confirm a new user can follow the context-pack workflow without being told to read the whole repo | 2026-03-24 |

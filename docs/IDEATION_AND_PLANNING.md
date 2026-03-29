@@ -1,7 +1,7 @@
 # Ideation And Planning
-*Version:* v0.2  
-*Date:* 2026-03-11  
-*Last reviewed:* 2026-03-11
+*Version:* v0.3  
+*Date:* 2026-03-29  
+*Last reviewed:* 2026-03-29
 
 Use this document to turn a rough idea into an executable plan before feature work
 sprawls.
@@ -37,6 +37,8 @@ Good slices are:
 
 ## Step 5: Choose the stack deliberately
 Use `docs/TECH_STACK_SELECTION.md` before locking frameworks, runtimes, or hosting.
+Do not only name the stack. Also decide which setup and verification commands become
+canonical and which repo files need to change to match that choice.
 
 ## Step 6: Plan prompt and eval assets if AI is product-critical
 If model behavior matters to the product:
@@ -54,4 +56,5 @@ Each iteration should answer:
 ## Suggested Codex planning prompt
 > Read `docs/PROJECT_MANIFESTO.md`, `docs/PROJECT_CHARTER.md`, and
 > `docs/TECH_STACK_SELECTION.md`. Propose the smallest MVP plan with explicit
-> assumptions, risks, prompt or eval implications, and verification needs.
+> assumptions, risks, prompt or eval implications, verification needs, and the repo
+> changes required to adopt the chosen stack cleanly.
