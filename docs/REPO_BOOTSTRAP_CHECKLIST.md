@@ -1,7 +1,7 @@
 # Repo Bootstrap Checklist
-*Version:* v1.3  
-*Date:* 2026-03-28  
-*Last reviewed:* 2026-03-28
+*Version:* v1.4  
+*Date:* 2026-03-29  
+*Last reviewed:* 2026-03-29
 
 Use this checklist immediately after copying this starter into a real repository.
 
@@ -25,6 +25,11 @@ Use this checklist immediately after copying this starter into a real repository
 - Rewrite `docs/PROJECT_CHARTER.md` with scope, users, and non-goals.
 - Decide whether the sample Python verification stack will stay or be replaced.
 - Update `docs/TECH_STACK_SELECTION.md` with the real project decision.
+- Name the canonical setup, run, test, lint, and format commands for the real stack.
+- Decide which inherited config, package, build, and verification files stay, are
+  replaced, or are removed.
+- If the Python maintenance stack stays temporarily, record why and what should trigger
+  replacing it.
 - Confirm `docs/DECISIONS.md` contains project-specific decisions rather than template
   history.
 - Decide whether the new repo will use direct commits to `main` or short-lived PR branches.
@@ -50,6 +55,8 @@ Use this checklist immediately after copying this starter into a real repository
 - Review `.agents/skills/` and decide whether to keep, extend, or replace the starter skills.
 - Review `codex/rules/default.rules.example` and decide whether to activate project-scoped rules.
 - Ensure CI and local verification commands match the real stack.
+- Make sure `README.md`, `docs/START_HERE.md`, and any shared command docs point at the
+  same canonical setup and verification path.
 - Make sure `work/ACTIVE_TASKS.md` matches reality before active collaboration starts.
 - Decide whether to keep `CLAUDE.md` as a compatibility shim for Anthropic users.
 

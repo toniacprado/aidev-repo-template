@@ -1,7 +1,7 @@
 # Decisions Log
-*Version:* v0.8  
-*Date:* 2026-03-28  
-*Last reviewed:* 2026-03-28
+*Version:* v0.9  
+*Date:* 2026-03-29  
+*Last reviewed:* 2026-03-29
 
 Use this file to record meaningful product, architecture, or workflow decisions.
 
@@ -99,3 +99,15 @@ Use this file to record meaningful product, architecture, or workflow decisions.
   protected/public/shared repos, and fresh bootstrapped projects need a visible Git workflow
   policy instead of ad hoc chat advice.
 - Revisit when: Codex tooling or common repo protection defaults change materially.
+
+### 2026-03-29 - Post-bootstrap stack choice must include repo adoption guidance
+- Decision: the bootstrap flow should treat tech stack selection as both a decision and a
+  repo follow-through task, not only as "pick a framework."
+- Why: newcomers can name a stack and still end up with conflicting setup commands,
+  inherited Python tooling, and starter files that no longer match the real project.
+- Alternatives considered: leaving the stack doc as a short placeholder list, or adding a
+  separate mandatory migration guide.
+- Consequences: the bootstrap handoff, stack-selection doc, and checks now need to name
+  canonical commands plus the repo surfaces that should be updated after the decision.
+- Revisit when: fresh template-user trials show the current guidance is still too vague or
+  too heavy.

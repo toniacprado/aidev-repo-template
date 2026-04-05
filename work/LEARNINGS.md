@@ -1,7 +1,7 @@
 # Durable Learnings
-*Version:* v1.6  
-*Date:* 2026-03-28  
-*Last reviewed:* 2026-03-28
+*Version:* v1.7  
+*Date:* 2026-03-29  
+*Last reviewed:* 2026-03-29
 
 Use this file for discoveries that should influence future work but do not fit neatly in
 a single task file.
@@ -178,3 +178,13 @@ a single task file.
     habits for governed repos.
   Action or follow-up: keep the policy as "checkpoint always, branch when publishing across a
     review/protection boundary" and teach related pre-merge fixes to stay on the same branch.
+
+- Date: 2026-03-29
+  Area: post-bootstrap stack handoff
+  Learning: telling users to "choose the stack" is too weak after bootstrap; they also need
+    the repo to name canonical commands, decide what happens to inherited template tooling,
+    and point newcomers at one clear operating path.
+  Why it matters: otherwise fresh repos drift into mixed defaults where the chosen framework,
+    setup commands, verification path, and starter files contradict each other.
+  Action or follow-up: keep stack-selection guidance, generated bootstrap docs, and newcomer
+    checks aligned around both the stack decision and the repo follow-through it requires.

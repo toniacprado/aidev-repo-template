@@ -77,20 +77,24 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
         session_starter = temp_root / "docs" / "CODEX_SESSION_STARTER.md"
         artifact_workshop = temp_root / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md"
         bootstrap_guide = temp_root / "docs" / "BOOTSTRAP_NEXT_STEPS.md"
+        tech_stack = temp_root / "docs" / "TECH_STACK_SELECTION.md"
         start_here = (temp_root / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         manifesto = (temp_root / "docs" / "PROJECT_MANIFESTO.md").read_text(encoding="utf-8")
         decisions = (temp_root / "docs" / "DECISIONS.md").read_text(encoding="utf-8")
         session_starter_text = session_starter.read_text(encoding="utf-8")
         artifact_workshop_text = artifact_workshop.read_text(encoding="utf-8")
+        bootstrap_guide_text = bootstrap_guide.read_text(encoding="utf-8")
+        tech_stack_text = tech_stack.read_text(encoding="utf-8")
         bootstrap_item = temp_root / "work" / "items" / "BOOTSTRAP-001-initialize-project.md"
         no_template_items = not list((temp_root / "work" / "items").glob("TEMPLATE-*.md"))
         passed = (
             slug == "trial-project"
             and "docs/CODEX_SESSION_STARTER.md" in readme
-            and "Project-facing draft docs were generated" in readme
+            and "repo follow-through" in readme
             and session_starter.exists()
             and artifact_workshop.exists()
             and bootstrap_guide.exists()
+            and tech_stack.exists()
             and "docs/CODEX_SESSION_STARTER.md" in start_here
             and "docs/CONTEXT_ENGINEERING.md" in start_here
             and "docs/GIT_WORKFLOW.md" in start_here
@@ -98,12 +102,19 @@ def _check_python_bootstrap_behavior(repo_root: Path) -> CheckResult:
             and "Trial Project should strongly recommend finishing the core bootstrap" in decisions
             and "Context: Read README.md, AGENTS.md, docs/CONTEXT_ENGINEERING.md"
             in session_starter_text
+            and "canonical commands" in session_starter_text
             and "## Artifact 2: Landing Docs" in artifact_workshop_text
-            and "docs/CONTEXT_ENGINEERING.md" in bootstrap_guide.read_text(encoding="utf-8")
-            and "docs/GIT_WORKFLOW.md" in bootstrap_guide.read_text(encoding="utf-8")
+            and "setup, run, test, lint, and format commands" in artifact_workshop_text
+            and "docs/CONTEXT_ENGINEERING.md" in bootstrap_guide_text
+            and "docs/GIT_WORKFLOW.md" in bootstrap_guide_text
+            and "## After You Choose The Stack" in bootstrap_guide_text
+            and "## Repo Follow-Through After This Decision" in tech_stack_text
+            and "Canonical setup command" in tech_stack_text
             and bootstrap_item.exists()
             and "docs/CONTEXT_ENGINEERING.md" in bootstrap_item.read_text(encoding="utf-8")
             and "docs/GIT_WORKFLOW.md" in bootstrap_item.read_text(encoding="utf-8")
+            and "one clear setup and verification path"
+            in bootstrap_item.read_text(encoding="utf-8")
             and "BOOTSTRAP-001" in active_tasks
             and no_template_items
         )
@@ -232,9 +243,23 @@ def run_newcomer_smoke_checks(repo_root: Path) -> list[CheckResult]:
     )
     checks.append(
         _check_file_contains(
+            repo_root / "docs" / "TECH_STACK_SELECTION.md",
+            "Adoption checklist after the decision",
+            "tech-stack-doc-has-adoption-checklist",
+        )
+    )
+    checks.append(
+        _check_file_contains(
             repo_root / "docs" / "REPO_BOOTSTRAP_CHECKLIST.md",
             "bootstrap_new_project.py",
             "bootstrap-checklist-links-python-bootstrap",
+        )
+    )
+    checks.append(
+        _check_file_contains(
+            repo_root / "docs" / "REPO_BOOTSTRAP_CHECKLIST.md",
+            "canonical setup, run, test, lint, and format commands",
+            "bootstrap-checklist-names-canonical-commands",
         )
     )
     checks.append(

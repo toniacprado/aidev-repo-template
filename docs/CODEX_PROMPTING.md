@@ -1,7 +1,7 @@
 # Codex Prompting
-*Version:* v0.9  
-*Date:* 2026-03-24  
-*Last reviewed:* 2026-03-24
+*Version:* v1.0  
+*Date:* 2026-03-29  
+*Last reviewed:* 2026-03-29
 
 This file captures the prompting patterns that make Codex more reliable in practice.
 
@@ -115,10 +115,12 @@ docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
 work/items/BOOTSTRAP-001-initialize-project.md.
 Constraints: Stay in bootstrap/spec mode first. Ask a short focused interview if key facts
 are missing. Load only the bootstrap context pack first, then retrieve extra files just in
-time. Warn once before any explicit skip, then record assumptions and bootstrap debt in
-`work/`.
+time. Do not stop at naming a framework; also define the canonical commands and the repo
+follow-through needed to adopt the chosen stack. Warn once before any explicit skip, then
+record assumptions and bootstrap debt in `work/`.
 Done when: README.md, docs/START_HERE.md, the core project artifacts, and the first
-implementation slice are defined with verification.
+implementation slice are defined with verification and the chosen stack has a clear repo
+adoption path.
 ```
 
 ### Implementation request

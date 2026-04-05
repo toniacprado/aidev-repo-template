@@ -68,9 +68,7 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "Review `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md`." in (
         readme_text
     )
-    assert "Project-facing draft docs were generated for the manifesto, charter, stack" in (
-        readme_text
-    )
+    assert "repo follow-through" in readme_text
 
     assert 'name = "acme-platform"' in (tmp_path / "pyproject.toml").read_text(encoding="utf-8")
     today = date.today().isoformat()
@@ -95,6 +93,7 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     )
     assert "Context: Read README.md, AGENTS.md, docs/CONTEXT_ENGINEERING.md" in session_starter
     assert "Done when: README.md, docs/START_HERE.md" in session_starter
+    assert "canonical commands" in session_starter
     assert "Skipping bootstrap is allowed but not recommended." in session_starter
 
     artifact_workshop = (tmp_path / "docs" / "BOOTSTRAP_ARTIFACT_WORKSHOP.md").read_text(
@@ -104,6 +103,9 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
         artifact_workshop
     )
     assert "## Artifact 2: Landing Docs" in artifact_workshop
+    assert "What setup, run, test, lint, and format commands should become canonical?" in (
+        artifact_workshop
+    )
     assert "## Artifact 5: Decisions Log" in artifact_workshop
 
     bootstrap_guide = (tmp_path / "docs" / "BOOTSTRAP_NEXT_STEPS.md").read_text(encoding="utf-8")
@@ -111,6 +113,8 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "recommends a spec-first bootstrap before feature work" in bootstrap_guide
     assert "Set the project slug to `acme-platform` in `pyproject.toml`." in bootstrap_guide
     assert "1. Rewrite `README.md` and `docs/START_HERE.md`." in bootstrap_guide
+    assert "## After You Choose The Stack" in bootstrap_guide
+    assert "canonical setup and verification" in bootstrap_guide
     assert "Keep `docs/CONTEXT_ENGINEERING.md` and this file open while Codex works." in (
         bootstrap_guide
     )
@@ -124,8 +128,10 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     assert "This charter is a starter draft for Acme Platform." in charter
 
     tech_stack = (tmp_path / "docs" / "TECH_STACK_SELECTION.md").read_text(encoding="utf-8")
-    assert "This draft records the inherited defaults from the template" in tech_stack
+    assert "Do not stop at naming a framework." in tech_stack
     assert "- Repo slug: `acme-platform`" in tech_stack
+    assert "## Repo Follow-Through After This Decision" in tech_stack
+    assert "Canonical setup command" in tech_stack
 
     decisions = (tmp_path / "docs" / "DECISIONS.md").read_text(encoding="utf-8")
     assert "### " + today + " - Bootstrap stays recommendation-first" in decisions
@@ -148,6 +154,7 @@ def test_bootstrap_script_initializes_new_project_state(tmp_path: Path) -> None:
     )
     assert "Use `docs/GIT_WORKFLOW.md` to choose the publish path" in bootstrap_item_text
     assert "`docs/START_HERE.md` reflects the real project workflow" in bootstrap_item_text
+    assert "one clear setup and verification path" in bootstrap_item_text
     assert f"updated: {today}" in bootstrap_item_text
     assert (
         f"- {today}: bootstrap task created from the template with project-draft docs, a Codex"

@@ -56,7 +56,7 @@ def _write_readme(repo_root: Path, project_name: str, project_slug: str, today: 
         - Project slug initialized as `{project_slug}`.
         - Template-only work items were removed.
         - Project-facing draft docs were generated for the manifesto, charter, stack
-          decision, decisions log, and first-session guides.
+          decision plus repo follow-through, decisions log, and first-session guides.
         - Placeholder text still needs to be replaced before feature work begins.
 
         ## Verification
@@ -98,7 +98,8 @@ def _write_start_here(repo_root: Path, project_name: str, today: str) -> None:
         2. Keep `docs/CONTEXT_ENGINEERING.md` and `docs/BOOTSTRAP_NEXT_STEPS.md` open while
            Codex works.
         3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for
-           drafting the manifesto, charter, stack decision, and work items.
+           drafting the manifesto, charter, stack decision, canonical commands, and work
+           items.
         4. Review the drafted files, correct assumptions, and only then move into feature
            work.
         5. If you deliberately skip bootstrap, make sure Codex records assumptions and
@@ -147,19 +148,23 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
         docs/DECISIONS.md, work/ACTIVE_TASKS.md, and
         work/items/BOOTSTRAP-001-initialize-project.md.
         Constraints: Stay in bootstrap/spec mode first. Strongly recommend finishing the
-        landing docs, manifesto, charter, tech stack decision, decision log, and first work
-        item before feature implementation. Do not ask me to fill blank forms; interview me
-        with a short focused set of questions, then draft the files directly. Load only the
-        bootstrap context pack first, then retrieve extra files just in time. If I explicitly
-        choose to skip bootstrap, warn me once about the risk, then proceed and record
-        assumptions and follow-up bootstrap debt in work/.
-        Done when: README.md, docs/START_HERE.md, the core project artifacts, and the first
-        implementation slice plus verification path are defined in work/.
+        landing docs, manifesto, charter, tech stack decision plus repo follow-through,
+        decision log, and first work item before feature implementation. Do not ask me to
+        fill blank forms; interview me with a short focused set of questions, then draft the
+        files directly. Load only the bootstrap context pack first, then retrieve extra files
+        just in time. Do not stop at naming a framework; also define the canonical commands
+        and the repo changes needed to adopt the chosen stack. If I explicitly choose to skip
+        bootstrap, warn me once about the risk, then proceed and record assumptions and
+        follow-up bootstrap debt in work/.
+        Done when: README.md, docs/START_HERE.md, the core project artifacts, the chosen
+        stack's canonical commands, and the first implementation slice plus verification path
+        are defined in work/.
         ```
 
         ## What Good Looks Like
         - Codex asks a short set of targeted questions instead of waiting for a perfect brief.
-        - Codex drafts the manifesto, charter, stack decision, decision log, and work item.
+        - Codex drafts the manifesto, charter, stack decision, repo follow-through, decision
+          log, and work item.
         - You review and correct assumptions before feature work begins.
 
         ## Corrective Prompt
@@ -170,8 +175,8 @@ def _write_codex_session_starter(repo_root: Path, project_name: str, today: str)
         Context: Read AGENTS.md, docs/CONTEXT_ENGINEERING.md, docs/CODEX_SESSION_STARTER.md,
         docs/BOOTSTRAP_NEXT_STEPS.md, docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md,
         work/ACTIVE_TASKS.md, and work/items/BOOTSTRAP-001-initialize-project.md.
-        Constraints: Do not implement features yet. Finish the core project artifacts first
-        unless I explicitly tell you to skip bootstrap.
+        Constraints: Do not implement features yet. Finish the core project artifacts and
+        stack adoption plan first unless I explicitly tell you to skip bootstrap.
         Done when: bootstrap artifacts and work tracking are drafted well enough to define the
         first implementation slice.
         ```
@@ -275,13 +280,16 @@ def _write_bootstrap_artifact_workshop(repo_root: Path, project_name: str, today
 
         Ask questions like:
         - What platforms or environments must this run on?
-        - What language or framework should own the core logic?
-        - What test runner or verification path should become canonical?
-        - Should the inherited Python maintenance stack stay temporarily or be replaced now?
+        - What language or framework should own each important product surface?
+        - What setup, run, test, lint, and format commands should become canonical?
+        - Which inherited files, package managers, or starter paths need replacement or
+          removal to match the chosen stack?
+        - Should the inherited Python maintenance stack stay temporarily or be replaced now,
+          and what should trigger that change?
 
         Done when:
-        - The main implementation stack and verification path are named, even if a few
-          decisions are provisional.
+        - The main implementation stack, canonical commands, and immediate repo
+          follow-through are named, even if a few decisions are provisional.
 
         ## Artifact 5: Decisions Log
         File: `docs/DECISIONS.md`
@@ -359,7 +367,8 @@ def _write_bootstrap_next_steps(
            Use this even if the product idea feels clear already.
         2. Keep `docs/CONTEXT_ENGINEERING.md` and this file open while Codex works.
         3. Use `docs/BOOTSTRAP_ARTIFACT_WORKSHOP.md` if Codex needs more structure for the
-           manifesto, charter, stack decision, decision log, and work tracking.
+           manifesto, charter, stack decision, canonical commands, decision log, and work
+           tracking.
         4. Review the drafted files and replace incorrect assumptions.
         5. Only then move into feature work.
 
@@ -373,12 +382,24 @@ def _write_bootstrap_next_steps(
         3. Rewrite `docs/PROJECT_CHARTER.md`.
            Done when: scope, users, success metrics, and non-goals are explicit.
         4. Rewrite `docs/TECH_STACK_SELECTION.md`.
-           Done when: the real implementation stack and verification path are named, even if
-           some decisions are provisional.
+           Done when: the real implementation stack, canonical setup and verification
+           commands, and follow-through repo changes are named, even if some decisions are
+           provisional.
         5. Review `docs/DECISIONS.md`.
            Done when: it contains project-specific decisions rather than template history.
         6. Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`.
            Done when: another contributor can see the next real task without chat history.
+
+        ## After You Choose The Stack
+        - Update `README.md` and `docs/START_HERE.md` so a newcomer sees the real setup and
+          verification commands first.
+        - Replace or intentionally keep the inherited package, build, and verification files.
+          Do not leave them as accidental defaults.
+        - Align `src/`, `tests/`, and any package names with the chosen stack.
+        - Record whether the inherited Python maintenance stack stays temporarily or is being
+          removed, and capture the trigger in `docs/DECISIONS.md`.
+        - Update `work/items/BOOTSTRAP-001-initialize-project.md` and `work/ACTIVE_TASKS.md`
+          with the first slice and verification path that use the chosen stack.
 
         ## Skip Path
         Skipping bootstrap is allowed, but do it deliberately.
@@ -424,6 +445,8 @@ def _write_bootstrap_next_steps(
         - Choose a Git publish path. If the repo is protected, shared, or public, use
           short-lived PR branches. If it is private, solo, and unprotected, direct commits
           to `main` can be fine. See `docs/GIT_WORKFLOW.md`.
+        - Make sure `README.md`, `docs/START_HERE.md`, and the local or CI commands all point
+          at the same chosen stack.
         - Add at least one real decision entry in `docs/DECISIONS.md`.
         - Make sure `work/ACTIVE_TASKS.md` points at the first product slice, not only
           bootstrap cleanup.
@@ -534,12 +557,23 @@ def _write_tech_stack_selection(
     tech_stack = dedent(
         f"""\
         # Tech Stack Selection
-        *Version:* v0.1
+        *Version:* v0.2
         *Date:* {today}
         *Last reviewed:* {today}
 
         This draft records the inherited defaults from the template and the decisions still
-        needed for {project_name}.
+        needed for {project_name}. Do not stop at naming a framework. Use this file to make
+        the real stack and the repo follow-through explicit.
+
+        ## What This File Must Answer
+        - What product surfaces or services exist first.
+        - What language or framework should own each important surface.
+        - What setup, run, test, lint, and format commands are canonical.
+        - What package, build, or dependency tool is canonical.
+        - Where the product will run and how it will be observed.
+        - Whether the inherited Python maintenance stack stays temporarily, is replaced, or is
+          removed.
+        - What first implementation slice and verification path should happen next.
 
         ## Current Inherited Defaults
         - Repo slug: `{project_slug}`
@@ -550,20 +584,34 @@ def _write_tech_stack_selection(
         ## Replace These With Real Decisions
         - Product surfaces: replace with the app, service, or workflow you are actually
           building.
-        - Primary implementation language: replace with the language that should own the core
-          product logic.
-        - Main test runner: replace with the verification path that should become canonical.
-        - Packaging or build tool: replace with the real toolchain or deployment packaging.
+        - Primary runtime or framework per surface: replace with the stack that should own the
+          real product logic.
+        - Canonical setup command: replace with the command a newcomer should run first.
+        - Canonical run command: replace with the main local execution path.
+        - Canonical test command: replace with the verification path that should become
+          canonical.
+        - Canonical lint or format command: replace with the hygiene path you expect in daily
+          work.
+        - Package or build tool: replace with the real toolchain or deployment packaging.
         - Deployment target: replace with the environment where the product will run.
         - Observability and debugging: replace with the logs, metrics, or traces you need.
         - Prompt and eval strategy: replace with the real plan if model behavior matters to
           users.
+
+        ## Repo Follow-Through After This Decision
+        - Update `README.md` and `docs/START_HERE.md` so the default commands match the chosen
+          stack.
+        - Replace or intentionally keep the inherited package, build, and verification files.
+        - Align `src/`, `tests/`, and package names with the stack you chose.
+        - Update `work/ACTIVE_TASKS.md` and `work/items/BOOTSTRAP-001-initialize-project.md`
+          with the first slice and verification path.
 
         ## Decision On The Inherited Python Maintenance Stack
         - Replace this with one of:
           - keep it temporarily while the real stack is still being chosen
           - replace it immediately with the project's native tooling
           - remove it if the repo will stay docs-only for now
+        - If you keep it temporarily, add the revisit trigger in `docs/DECISIONS.md`.
 
         ## Next Decision
         - Name the first real implementation slice and the command that should verify it.
@@ -677,8 +725,11 @@ def _write_bootstrap_item(repo_root: Path, project_name: str, today: str) -> Non
         - `docs/START_HERE.md` reflects the real project workflow rather than the generated draft.
         - `docs/PROJECT_MANIFESTO.md` is rewritten for the real product.
         - `docs/PROJECT_CHARTER.md` is rewritten with real scope and non-goals.
-        - `docs/TECH_STACK_SELECTION.md` reflects the actual stack decision.
+        - `docs/TECH_STACK_SELECTION.md` reflects the actual stack decision, canonical
+          commands, and what happens to inherited template tooling.
         - `docs/DECISIONS.md` contains project-specific decisions.
+        - The repo points newcomers at one clear setup and verification path for the chosen
+          stack.
         - `work/ACTIVE_TASKS.md` points at the first non-bootstrap product task.
 
         ## Progress Log
